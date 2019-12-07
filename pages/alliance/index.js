@@ -20,6 +20,7 @@ Page({
     imgheights: [],//所有图片的高度  
     current: 0,//默认  
     searchValue: '',
+    rec_product:[],//商品列表
   },
   bindinput(e) {
     console.log("bindinput--e==", e)
@@ -214,6 +215,25 @@ Page({
   },
 
   /**
+   * 商品列表 
+   */
+  getRecProductList() {
+    var that = this;
+    app.webapi.getCategory()
+      .then(res => {
+        if (res.data.status_code == 0) {
+          // console.log("getRecProductList res.data.data == ", res.data.data)
+          that.setData({
+            rec_product: res.data.data
+          })
+        }
+      })
+      .catch(res => {
+        console.log("getRecProductList--catch--res==", res)
+      })
+  },
+
+  /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
@@ -225,6 +245,7 @@ Page({
     }
     that.getRecommend()
     that.getAdListData()
+    that.getRecProductList()
 
     app.getProfile(true, function (userProfile) {
       console.log("alliance--getProfile--userProfile==", userProfile)

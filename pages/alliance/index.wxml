@@ -159,9 +159,41 @@
   </view> -->
 
   <!-- 商品列表 -->
-  <view>
-  
+  <view class="s-size-area" wx:if="{{ rec_product.length }}">
+
+    <view wx:for="{{rec_product}}" wx:key="id" style="margin-top: 8px;">
+
+      <view class="area_title">
+        <text>氧分子微粒</text>
+        <image class="area_title_image" mode="widthFix" src="../../images/home/arrow.png" />
+      </view>
+
+      <view class="area_cover" wx:if="true">
+        <image mode="widthFix" src="../../images/home/product01.jpg" />
+        <view class="area_cover_name" wx:if="true">
+          <view class="div1">
+            <view class="div2">
+              <view class="div3">
+                <text>泡一泡 , 就干净</text>
+                <!-- <view ng-if="no_branch">{{productItem.description}}</view>
+                <view ng-if="des_branch">
+                  <view ng-repeat="d_b_itemt in des_branch_list">{{d_b_itemt}}</view>
+                </view> -->
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!--<view id="homeProductGrids" class="area-product">
+        <view class="weui_grid load-more-product" ng-show="home_load_more_btn_show">
+          <view class="load-more-button">拼命加载中……</div>
+        </view>
+    </view> -->
+
   </view>
+
 </view>
 <view wx:elif="{{isAllianceRequest}}" style="color: #666;padding: 30rpx;text-indent: 2em;">
   欢迎你来到。

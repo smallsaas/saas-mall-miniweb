@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    userProfile: {},
     orderTypes: [
       {
         title: "待付款",
@@ -133,11 +134,25 @@ Page({
       app.utils.openPage(e)
     }
   },
+
+  /**
+   * 个人信息
+   */
+  getProfile(){
+    app.getProfile(true, function (userProfile) {
+      console.log("getProfile--userProfile==", userProfile)
+      that.setData({
+        userProfile: userProfile
+      })
+    })
+  },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    var that = this
+    that.getProfile()
   },
 
   /**
@@ -154,17 +169,17 @@ Page({
     var that = this;
     var allianceData = app.globalData.allianceData;
     console.log("allianceData==", allianceData)
-    if (allianceData) {
-      if (allianceData.allianceType == 1) {
-        that.data.list[3].status = 1
-      } else {
-        that.data.list[3].status = 0
-      }
-      that.setData({
-        allianceData: allianceData,
-        list: that.data.list
-      })
-    }
+    // if (allianceData) {
+    //   if (allianceData.allianceType == 1) {
+    //     that.data.list[3].status = 1
+    //   } else {
+    //     that.data.list[3].status = 0
+    //   }
+    //   that.setData({
+    //     allianceData: allianceData,
+    //     list: that.data.list
+    //   })
+    // }
   },
 
   /**

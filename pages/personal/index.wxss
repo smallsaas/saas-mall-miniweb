@@ -2,6 +2,107 @@
 page {
   background: #f0f0f0;
 }
+
+/* 个人信息 */
+#profile .my-page-head {
+    width: 100%;
+    height: 172rpx;
+    padding: 10px 0 10px 0;
+    /*background-color: #734284;*/
+    /*background-image: url(../../img/my/user-background.png);*/
+    background: -webkit-linear-gradient(top, #D0CDD4, #E1D9C6)
+    /*background: -webkit-linear-gradient(top, #AD9EC6, #DDD4C8)*/
+}
+#profile .my-page-head .user-photo{
+    width: 186rpx;
+    height: 186rpx;
+    float: left;
+    margin-right: .80rem;
+    margin-left: .80rem;
+    border-radius: 50%;
+    border: 4rpx solid #fff;
+}
+#profile .my-page-head-img{
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 50%;
+}
+#profile .my-page-head .user-info {
+    /*padding-top: 10rpx;*/
+    margin-left: 115px;
+    position: relative;
+    white-space:nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis;
+}
+
+#profile .user-detail {
+    min-width: 340rpx;
+    font-size: 36rpx;
+    line-height: 1.4;
+    color: #FCF9F6;
+    float: left;
+}
+
+#profile .user-detail .use_div{
+    width: 100%;
+    float: left;
+    /*margin-top: 2px;*/
+}
+
+#profile .user-detail p{
+    width: 100%;
+    margin-top: 2px;
+    margin-bottom: 5px;
+}
+
+#profile .user-detail .user-lv-text{
+    min-width: 240rpx;
+    font-size: 24rpx;
+    line-height: 1.6;
+    color: #fff;
+    position: relative;
+    margin-top: 7px;
+}
+
+#profile .user-detail .user-lv-text p{
+    float: left;
+}
+
+#profile .user-detail .user-lv-text .shop-icon{
+    padding:0 0 0 3px;
+}
+
+#profile .user-detail .user-lv-text .shop-icon{
+    width: 36rpx;
+    height: 36rpx;
+    float: left;
+}
+
+#profile .user-detail .user-lv-text .shop-icon img{
+    width: 36rpx;
+    height: auto;
+    border-radius: 0;
+}
+
+#profile .owner_tag {
+    width: 72rpx;
+    height: 26rpx;
+    line-height: 30rpx;
+    font-size: 20rpx;
+    text-align: center;
+    background-color: white;
+    padding: 1px;
+    border-radius: 2px;
+    margin-left: 7px;
+    margin-top: 5px;
+    float: left;
+}
+
+
+
+
+/* 订单 */
 .order-type {
   display: flex;
   flex-wrap: nowrap;
