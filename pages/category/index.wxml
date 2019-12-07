@@ -1,0 +1,4 @@
+<view class="content-container">
+  <wxc-loading is-show="false" type="mgj"></wxc-loading>
+    <wxc-toast is-show="true" icon="yes" icon-color="#FF0077" text="所有商品加载完成"> </wxc-toast>
+</view>

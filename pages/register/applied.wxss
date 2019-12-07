@@ -1,0 +1,9 @@
+/* pages/register/applied.wxss */
+
+.btn {
+  width: 90%;
+  text-align: center;
+  margin: 40rpx auto;
+  padding: 20rpx;
+  border-radius: 10rpx;
+}

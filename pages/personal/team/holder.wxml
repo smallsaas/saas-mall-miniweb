@@ -1,0 +1,58 @@
+<!--pages/personal/holder/index.wxml-->
+<view style="text-align: center; padding: 20rpx;">
+  <!-- <view class="flex-cell main-bg total-bonus">
+    <view>
+      <text>¥</text>
+      <text style="font-size: 50rpx;">{{ holder.total_bonus }}</text>
+    </view>
+    <view style="font-size: 24rpx;">当前分红</view>
+  </view> -->
+  <view style="text-align: center;margin: 40rpx;">
+    <view class="main-bg circular-view" style="min-height: 100px; min-width: 100px;">
+      <view class="value">
+        <text style="margin-right: 10rpx;">¥</text>
+        <text style="font-size: 60rpx;">{{holder.total_bonus || 0}}</text>
+        <text style="font-size: 30rpx;height:1.2">\n当前分红</text>
+      </view>
+    </view>
+  </view>
+  <view class="main-color-2" style="text-align: center;">年化收益</view>
+  <view class="flex-row date-view">
+    <view style="font-size: 24rpx;color: #333;">当前数据</view>
+    <view style="font-size: 20rpx;color: #666;">分红时间：{{holder.start_time}}至{{holder.end_time}}</view>
+  </view>
+  <view class="bonus-spread">
+    <view class="flex-cell" style="align-items: center;flex: 1;">
+      <!-- <view class="full-num">{{ holder.holder_num }}</view> -->
+      <view class="circular-view" style="min-height: 70px; min-width: 70px;background: #e79b37;">
+        <view class="value">
+          <text style="margin-right: 10rpx;">¥</text>
+          <text style="font-size: 60rpx;">{{holder.holder_num || 0}}</text>
+          <!-- <text style="font-size: 30rpx;height:1.2">\n当前分红</text> -->
+        </view>
+      </view>
+      <view style="font-size: 24rpx;color:#333;">分红股东总人数</view>
+      <view class="spread-num">
+        <text style="font-size: 22rpx;color:#999;">平均分红</text>
+        <text class="main-color" style="font-size: 20rpx;">¥</text>
+        <text class="main-color" style="font-size: 30rpx;">{{ holder.mean_bonus }}</text>
+      </view>
+    </view>
+    <view class="flex-cell" style="align-items: center;flex: 1;">
+      <!-- <view class="full-num">{{ holder.team_ratio * 100 }}<text style="font-size: 20rpx;">%</text></view> -->
+      <view class="circular-view" style="min-height: 70px; min-width: 70px;background: #e79b37;">
+        <view class="value">
+          <text style="font-size: 60rpx;">{{holder.team_ratio * 100 || 0}}</text>
+          <text style="margin-right: 10rpx;">%</text>
+          <!-- <text style="font-size: 30rpx;height:1.2">\n当前分红</text> -->
+        </view>
+      </view>
+      <view style="font-size: 24rpx;color:#666;">我的团队占比分红</view>
+      <view class="spread-num">
+        <text style="font-size: 22rpx;color:#999;">占比分红</text>
+        <text class="main-color" style="font-size: 20rpx;">¥</text>
+        <text class="main-color" style="font-size: 30rpx;">{{ holder.mean_bonus }}</text>
+      </view>
+    </view>
+  </view>
+</view>

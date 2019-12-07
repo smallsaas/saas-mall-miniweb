@@ -1,0 +1,69 @@
+/**index.wxss**/
+page {
+  background: #eff0f1;
+}
+.container {
+  /* padding-top: 200rpx; */
+}
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.user-nick {
+  color: #aaa;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+.phone-input {
+  border-bottom: 1rpx solid #ccc;
+  padding-bottom: 10rpx;
+  text-align: center;
+  width: 80vw;
+  margin: 20rpx auto;
+}
+
+.phone-input-holder {
+  color: #ccc;
+}
+
+.flex-row {
+  background: #feffff;
+  width: 90%;
+  margin: 40rpx auto;
+  border-radius: 10rpx;
+  color: #666;
+}
+.flex-row .laber {
+  width: 150rpx;
+  padding-left: 20rpx;
+}
+.flex-row input {
+  flex: 1;
+  padding: 20rpx;
+}
+.code-btn {
+  padding: 20rpx;
+  background-color: #4faf70!important;
+  color: #fff!important;
+}
+
+.sub-btn {
+  width: 90%;
+  padding: 20rpx;
+  margin-top: 100rpx;
+}
+.button-hover {
+  opacity: 0.9;
+}

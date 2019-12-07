@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "团队奖励",
+  "enablePullDownRefresh": false,
+  "usingComponents": {
+    "van-icon": "../../../utils/vant/icon/index"
+  }
+}

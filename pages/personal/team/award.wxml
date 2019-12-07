@@ -1,0 +1,41 @@
+<!--pages/personal/team/award.wxml-->
+<view>
+  <!-- <view class="flex-cell main-bg total-award">
+    <view>
+      <text>¥</text>
+      <text style="font-size: 50rpx;">{{commissionTotal}}</text>
+    </view>
+    <view style="font-size: 24rpx;">本月提成</view>
+  </view> -->
+  <view style="text-align: center;margin: 80rpx;">
+    <view class="main-bg circular-view" style="min-height: 100px; min-width: 100px;">
+      <view class="value">
+        <text style="margin-right: 10rpx;">¥</text>
+        <text style="font-size: 60rpx;">{{commissionTotal || 0}}</text>
+        <text style="font-size: 30rpx;height:1.2">\n本月提成</text>
+      </view>
+    </view>
+  </view>
+    
+  <!-- <view class="absolute-date">
+    <picker mode="date" fields="month" value="{{ fetch_date }}" start="" end="{{ end_date }}" bindchange="bindDateChange">
+      <view class="picker flex-row">
+        <view class="main-color-2">{{ fetch_date?fetch_date:"请选择日期" }}</view>
+        <van-icon name="bars" size="18px;"  />
+      </view>
+    </picker>
+  </view> -->
+  <view class="award-details">
+    <view class="laber">提成明细</view>
+    <block wx:if="{{commissionOrder}}">
+      <view class="item-award" wx:for="{{ commissionOrder }}" wx:key="{{ item.id }}">
+        <view>订单时间：{{ item.createTime }}</view>
+        <view>推荐盟友：{{ item.invitorName }}</view>
+        <view>订单金额：¥{{ item.orderMoney || 0 }}</view>
+        <view>订单提成：¥{{ item.commission || 0 }}
+        <text class="main-color-2" style="font-size: 24rpx;" wx:if="{{ item.holder_status==0 }}">（提成未生效）</text></view>
+      </view>
+    </block>
+    <view class="no-data" wx:else>暂无数据</view>
+  </view>
+</view>

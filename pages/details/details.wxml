@@ -1,0 +1,180 @@
+<!--details.wxml-->
+<import src="../../wxParse/wxParse.wxml" />
+
+<view class="container">
+  <!-- <view class="container" style="overflow:{{inShow?'hidden':'visible'}}"> -->
+  <view class="slide">
+    <!-- autoplay circular -->
+    <swiper indicator-dots="true" interval="1000" style="height:{{imgHeight}}" indicator-color="#c7b3ce" indicator-active-color="#8f689d">
+      <block wx:for="{{productData.covers}}" wx:key="index">
+        <swiper-item>
+          <image src="{{ item.url}}" lazy-load bindtap="clickImg" data-product-id="{{ item.id }}" class="slide-image" mode="widthFix" bindload='getHeight' />
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="summary">
+    <text class="productName">{{ productData.name }}</text>
+    <view class="flex-row tariff-flex">
+      <view style="line-height: 1em; align-items: flex-end;">
+        <text class="main-color-2" style="font-size: 30rpx;margin-right:6rpx;">¥</text>
+        <text class="main-color-2" style="font-size: 40rpx;">{{productData.suggested_price}}</text>
+        <text style="font-size: 30rpx; color:#000;" wx:if="{{productData.price>0}}"> \ {{productData.price*10}}积分             </text>
+      </view>
+    </view>
+    <view class="flex-row tariff-flex" style="border-bottom: 2rpx solid #ccc;">
+      <view class="flex-row" style="line-height: 1em; align-items: flex-end;">
+        <text class="laber suggested_price_title">市场价：</text>
+        <text class="main-color-2 suggested_price">¥{{productData.suggested_price}}</text>
+      </view>
+    </view>
+    <view class="flex-row shipping">
+      <!-- <text class="freight" wx:if="{{ productData.freight != 0 }}">运费：{{ productData.freight }}</text> -->
+      <text class="freight">运费：{{productData.fare_template.title}} </text>
+      <view class="flex-row delivery">
+        <image src="../../images/delivery.png"></image>
+        <text>默认配送：{{productData.fare_template.name}}</text>
+      </view>
+    </view>
+    <view class="flex-row">
+      <view class="product_tips custom_text_primary_medium">
+        <text class="p1">【{{ productData.fare_template.title}}】</text>
+        <text class="p2">{{ productData.fare_template.content}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="assure">
+    <view class="assureItem">
+      <image src="../../images/details/details-promise.png"></image>
+      <text>7天退换</text>
+    </view>
+    <view class="assureItem">
+      <image src="../../images/details/details-promise.png"></image>
+      <text>48小时送达</text>
+    </view>
+    <view class="assureItem">
+      <image src="../../images/details/details-promise.png"></image>
+      <text>假一赔十</text>
+    </view>
+  </view>
+
+  <view class="cut-line"></view>
+
+  <!-- <view class="borderView"> </view> -->
+  <view class="flex-row description-link">
+    <image src="../../images/details/product-imgs-icon.png"></image>
+    <text>图文详情</text>
+  </view>
+  <view class="wxParse">
+    <template is="wxParse" data="{{wxParseData:description.nodes}}" />
+  </view>
+
+  <view class="footer">
+    <view class="left-footer">
+      <view class="leftItem" style="border-right: 1rpx solid #ccc;">
+        <button class="default-botton main-color-2" open-type="contact" bindcontact="handleContact">
+          <van-icon name="chat-o" color="#e42c2f" size="25px" />
+          <view class="custom_text_primary_medium" style="font-size: 20rpx;">客服咨询</view>
+        </button>
+        <!-- <image src="../../images/service.png"></image>
+        <text class="main-color-2 ">客服咨询</text> -->
+      </view>
+      <!-- <view class="leftItem" bindtap="favorite" data-id="{{ productData.id }}">
+        <image src="../../images/{{ favorite?'favorite_yes.png':'favorite_no.png'}}"></image>
+        <text class="{{favorite?'light':''}}">收藏</text>
+      </view> -->
+      <view class="leftItem" bindtap="openPage" data-url="../cart/cart">
+        <!-- <image src="../../images/cart.png"></image> -->
+        <van-icon name="shopping-cart-o" size="25px" info="{{ cart.length > 99 ? '99+' : (cart.length > 0 ? cart.length : '')  }}" />
+        <text style="color: #999" hover-class="hoverView">购物车</text>
+      </view>
+    </view>
+    <view class="right-footer">
+      <view class="cart-botton custom_flat_primary_light" hover-class="hoverView" bindtap="openDeploy" data-id="{{ productData.id }}" data-button="cart">
+        <text>加入购物车</text>
+      </view>
+      <view class="buy-botton custom_flat_primary_medium" hover-class="hoverView" bindtap="openDeploy" data-id="{{ productData.id }}" data-button="buy">
+        <text>立即购买</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 
+  <view class="deployView {{ inShow ? 'changPosition':''}}" catchtap="closeDeploy" animation="{{animationData}}">
+    <view class="opacityView" catchtap="closeDeploy"></view>
+    <view class="deployMain" catchtap="prevent">
+      <view class="deploy-top">
+        <view class="top-left">
+          <image class="top-cover" src="{{ productData.cover }}" />
+        </view>
+        <view class="top-right">
+          <view class="top-name">{{ productData.short_name }}</view>
+          <span class="top-stock">库存：{{ productData.stock_balance }}</span>
+          <span class="top-price">￥{{ productData.price }}</span>
+        </view>
+        <view class="close" catchtap="closeDeploy">×</view>
+      </view>
+      <view class="deploy-content">
+        <view class="standard" wx:if="{{ productData.specifications.length }}">
+          <text>规格</text>
+          <view class="standard-content">
+          <view class="standard-item {{selectIndex==index?'select':''}}" wx:for="{{ productData.specifications }}" catchtap="selectStandrd" data-index="{{index}}" data-id="{{item.id}}">
+            {{item.name}}
+          </view>
+          </view>
+        </view>
+        <view class="content-num">
+          <view class="num">
+            <text class="num-link">数量</text>
+            <view class="num-main">
+              <text class="numButton" bindtap="reduce">-</text>
+              <input type="number" value="{{ quantity }}" />
+              <text class="numButton" bindtap="add">+</text>
+            </view>
+          </view>
+        </view>
+      </view>
+      <button class="deploy-button" hover-class="none" bindtap="addCart" data-id="{{ productData.id }}">加入购物车</button>
+      <button class="deploy-button" wx:if="{{button=='buy'}}" data-id="{{ productData.id }}" bindtap="buyNow">立即购买</button>
+    </view>
+  </view> -->
+
+</view>
+
+<van-popup custom-class="product-popup" show="{{ inShow }}" bind:close="closeDeploy" position="bottom" safe-area-inset-top="true" closeable>
+  <view class="deployMain" catchtap="prevent">
+    <view class="deploy-top">
+      <view class="top-left">
+        <image class="top-cover" src="{{ productData.cover }}" />
+      </view>
+      <view class="top-right">
+        <view class="top-name">{{ productData.short_name }}</view>
+        <span class="top-stock">库存：{{ productData.stock_balance }}</span>
+        <span class="top-price">￥{{ productData.price }}</span>
+      </view>
+    </view>
+    <view class="deploy-content">
+      <view class="standard" wx:if="{{ productData.specifications.length }}">
+        <text>规格</text>
+        <view class="standard-content">
+          <view class="standard-item {{selectIndex==index?'select':''}}" wx:for="{{ productData.specifications }}" wx:key="index" catchtap="selectStandrd" data-index="{{index}}" data-id="{{item.id}}">
+            {{item.name}}
+          </view>
+        </view>
+      </view>
+      <view class="content-num">
+        <view class="num">
+          <text class="num-link">数量</text>
+          <view class="num-main">
+            <text class="numButton" bindtap="reduce">-</text>
+            <input type="number" bindblur="getInputBlur" data-layer="quantity" value="{{ quantity }}" />
+            <text class="numButton" bindtap="add">+</text>
+          </view>
+        </view>
+      </view>
+    </view>
+    <button class="deploy-button" hover-class="hoverView" bindtap="addCart" data-id="{{ productData.id }}">加入购物车</button>
+    <button class="deploy-button" wx:if="{{button=='buy'}}" data-id="{{ productData.id }}" bindtap="buyNow">立即购买</button>
+  </view>
+</van-popup>

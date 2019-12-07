@@ -1,0 +1,48 @@
+/* pages/personal/team/award.wxss */
+page {
+  background: #f0f0f0;
+}
+.total-award {
+  /* display: inline-block; */
+  height: 200rpx;
+  width: 200rpx;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin: 60rpx auto;
+  border-radius: 50%;
+  /* vertical-align:middle; */
+}
+
+.absolute-date {
+  position: absolute;
+  top: 30rpx;
+  right: 30rpx;
+  font-size: 26rpx;
+  vertical-align:middle;
+}
+.van-icon {
+  vertical-align:middle;
+}
+
+.award-details {
+  margin: 20rpx;
+  background: #fff;
+  border-radius: 10rpx;
+  padding-bottom: 50rpx;
+  color: #777;
+}
+.award-details .laber {
+  margin: 0 30rpx;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #cfcfcf;
+}
+
+.item-award {
+  color: #777;
+  margin: 0 30rpx;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid #cfcfcf;
+  font-size: 28rpx;
+  line-height: 1.5;
+}
