@@ -1,0 +1,4 @@
+/* pages/personal/collection/index.wxss */
+.desc-css{
+  flex: 1;
+}

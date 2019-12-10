@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/personal/collection/index",
     "pages/alliance/index",
     "pages/category/category",
     "pages/index/index",
@@ -37,7 +38,8 @@
     "pages/personal/amount/cash-out/list",
     "pages/personal/amount/recharge/index",
     "pages/personal/amount/recharge/list",
-    "pages/personal/wallet"
+    "pages/personal/wallet",
+    "pages/personal/normalProblem/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",

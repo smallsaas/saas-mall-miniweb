@@ -43,7 +43,7 @@ App({
     var that = this;
     if (!that.isRuning) {
       that.getCategory()
-      that.getAllianceOrder()
+      // that.getAllianceOrder()
     }
 
     //TODO

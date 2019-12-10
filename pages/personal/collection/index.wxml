@@ -1,0 +1,22 @@
+<!--pages/personal/collection/index.wxml-->
+<view class="container">
+  <van-card 
+    tag="标签" 
+    currency="￥" 
+    price="10"
+    num="2" 
+    origin-price="20"
+    thumb="{{ imageURL }}"
+    lazy-load="true"
+    >
+
+    <view slot="title">
+      商品标题
+    </view>
+    <view slot="desc" class="desc-css">
+      描述信息
+    </view>
+
+  </van-card>
+
+</view>

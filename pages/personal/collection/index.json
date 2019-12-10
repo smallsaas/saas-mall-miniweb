@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "收藏宝贝",
+  "usingComponents": {
+    "van-card": "../../utils/vant/card/index"
+  }
+}

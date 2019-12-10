@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "常见问题",
+  "usingComponents": {
+    "van-collapse": "../../utils/vant/collapse/index",
+    "van-collapse-item": "../../utils/vant/collapse-item/index"
+  }
+}

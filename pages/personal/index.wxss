@@ -1,115 +1,88 @@
 /* pages/personal/index.wxss */
+
 page {
   background: #f0f0f0;
 }
 
 /* 个人信息 */
+
 #profile .my-page-head {
-    width: 100%;
-    height: 172rpx;
-    padding: 10px 0 10px 0;
-    /*background-color: #734284;*/
-    /*background-image: url(../../img/my/user-background.png);*/
-    background: -webkit-linear-gradient(top, #D0CDD4, #E1D9C6)
-    /*background: -webkit-linear-gradient(top, #AD9EC6, #DDD4C8)*/
+  width: 100%;
+  height: 200rpx;
+  padding: 10px 0 10px 0;
+  /*background-color: #734284;*//*background-image: url(../../img/my/user-background.png);*/
+  background: -webkit-linear-gradient(top, #d0cdd4, #e1d9c6);
+  /*background: -webkit-linear-gradient(top, #AD9EC6, #DDD4C8)*/
+  display: flex;
+  flex-direction: row;
 }
-#profile .my-page-head .user-photo{
-    width: 186rpx;
-    height: 186rpx;
-    float: left;
-    margin-right: .80rem;
-    margin-left: .80rem;
-    border-radius: 50%;
-    border: 4rpx solid #fff;
+
+#profile .my-page-head .user-photo {
+  width: 186rpx;
+  height: 186rpx;
+  margin-right: 0.80rem;
+  margin-left: 0.80rem;
+  border-radius: 50%;
+  border: 4rpx solid #fff;
 }
-#profile .my-page-head-img{
-    width: 160rpx;
-    height: 160rpx;
-    border-radius: 50%;
+
+#profile .my-page-head-img {
+  width: 186rpx;
+  height: 186rpx;
+  border-radius: 50%;
 }
+
 #profile .my-page-head .user-info {
-    /*padding-top: 10rpx;*/
-    margin-left: 115px;
-    position: relative;
-    white-space:nowrap;
-    overflow: hidden;
-    text-overflow:ellipsis;
+  /*padding-top: 10rpx;*/
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 #profile .user-detail {
-    min-width: 340rpx;
-    font-size: 36rpx;
-    line-height: 1.4;
-    color: #FCF9F6;
-    float: left;
+  display: flex;
+  flex-direction: column;
+  min-width: 340rpx;
+  font-size: 36rpx;
+  color: #fcf9f6;
 }
 
-#profile .user-detail .use_div{
-    width: 100%;
-    float: left;
-    /*margin-top: 2px;*/
-}
-
-#profile .user-detail p{
-    width: 100%;
-    margin-top: 2px;
-    margin-bottom: 5px;
-}
-
-#profile .user-detail .user-lv-text{
-    min-width: 240rpx;
-    font-size: 24rpx;
-    line-height: 1.6;
-    color: #fff;
-    position: relative;
-    margin-top: 7px;
-}
-
-#profile .user-detail .user-lv-text p{
-    float: left;
-}
-
-#profile .user-detail .user-lv-text .shop-icon{
-    padding:0 0 0 3px;
-}
-
-#profile .user-detail .user-lv-text .shop-icon{
-    width: 36rpx;
-    height: 36rpx;
-    float: left;
-}
-
-#profile .user-detail .user-lv-text .shop-icon img{
-    width: 36rpx;
-    height: auto;
-    border-radius: 0;
+#profile .use_div {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 16rpx;
 }
 
 #profile .owner_tag {
-    width: 72rpx;
-    height: 26rpx;
-    line-height: 30rpx;
-    font-size: 20rpx;
-    text-align: center;
-    background-color: white;
-    padding: 1px;
-    border-radius: 2px;
-    margin-left: 7px;
-    margin-top: 5px;
-    float: left;
+  width: 72rpx;
+  height: 26rpx;
+  line-height: 30rpx;
+  font-size: 20rpx;
+  text-align: center;
+  background-color: white;
+  padding: 1px;
+  border-radius: 2px;
 }
 
-
-
+#profile .user-lv-text {
+  min-width: 240rpx;
+  font-size: 24rpx;
+  color: #fff;
+  margin-top: 7px;
+}
 
 /* 订单 */
 .order-type {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-around;
-  /* background: #fff; */
+  background: #fff;
   padding: 20rpx 0;
+  border-top: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
 }
+
 .item-type {
   display: flex;
   flex-direction: column;
@@ -117,11 +90,13 @@ page {
   font-size: 30rpx;
   /* color: #666; */
 }
+
 .item-type image {
   height: 70rpx;
   width: 70rpx;
 }
-.item-type view{
+
+.item-type view {
   font-size: 24rpx;
 }
 
@@ -135,25 +110,43 @@ page {
 
 .wallet-popup .popup-head {
   text-align: center;
-	border-bottom: 1rpx solid #ccc;
+  border-bottom: 1rpx solid #ccc;
   padding: 30rpx;
 }
+
 .password-input {
   border: 1rpx solid #ccc;
   flex: 1;
   padding: 20rpx;
   margin-left: 20rpx;
 }
+
 .wallet-popup .popup-foot {
   /* position: absolute; */
   bottom: 0;
   width: 100%;
   border: 0;
 }
+
 .wallet-popup .popup-foot .btn {
   padding: 20rpx;
   width: 80%;
   background: #999;
   color: #fff;
   margin-bottom: 40rpx;
+}
+
+/* 宫格 */
+.van-grid-item__content {
+}
+
+.grid-item-image{
+  width: 100rpx; 
+  height: 100rpx;
+  border-radius: 50px;
+}
+
+.grid-item-text{
+  margin-top:10rpx; 
+  font-size:26rpx;
 }

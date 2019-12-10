@@ -1,0 +1,27 @@
+<import src="../../../wxParse/wxParse.wxml" />
+
+<view class="container">
+  <van-collapse value="{{ activeName }}" bind:change="onChange" accordion>
+    <van-collapse-item name="1">
+      <view slot="title" class="item-title">
+        <view class="custom_flat_primary_medium icon-css">1</view>
+        <text style="margin-left:10rpx;">商品配送</text>
+      </view>
+      默认使用邮政快递发货；西藏、青海、宁夏、内蒙、新疆因以上地区路途遥远，所以正常情况下到货时间一般在7天左右。由此造成的不便，敬请谅解！！
+    </van-collapse-item>
+    <van-collapse-item name="2">
+      <view slot="title" class="item-title">
+        <view class="custom_flat_primary_medium icon-css">1</view>
+        <text style="margin-left:10rpx;">7天无理由退货</text>
+      </view>
+      关于7天无条件退货
+    </van-collapse-item>
+    <van-collapse-item name="3">
+      <view slot="title" class="item-title">
+        <view class="custom_flat_primary_medium icon-css">1</view>
+        <text style="margin-left:10rpx;">关于积分</text>
+      </view>
+      关于积分
+    </van-collapse-item>
+  </van-collapse>
+</view>

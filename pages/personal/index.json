@@ -2,6 +2,8 @@
   "navigationBarTitleText": "个人中心",
   "usingComponents": {
     "van-icon": "../../utils/vant/icon/index",
-    "van-popup": "../../utils/vant/popup/index"
+    "van-popup": "../../utils/vant/popup/index",
+    "van-grid": "../../utils/vant/grid/index",
+    "van-grid-item":"../../utils/vant/grid-item/index"
   }
 }

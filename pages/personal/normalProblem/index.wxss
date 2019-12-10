@@ -1,0 +1,16 @@
+.item-title{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.icon-css{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 30rpx;
+  color: #fff;
+  font-size: 24rpx;
+}

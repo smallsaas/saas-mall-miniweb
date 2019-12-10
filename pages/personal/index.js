@@ -11,19 +11,25 @@ Page({
       {
         title: "待付款",
         type: 1,
-        icon: "../../images/wait-2.png",
+        icon: "../../images/my/wait.png",
         url: "../order/order?status=CREATED_PAY_PENDING"
       },
       {
         title: "待发货",
         type: 2,
-        icon: "../../images/deliver_pending-2.png",
+        icon: "../../images/my/deliver_pending.png",
         url: "../order/order?status=CONFIRMED_DELIVER_PENDING"
       },
       {
-        title: "退换/售后",
+        title: "待收货",
         type: 3,
-        icon: "../../images/after_sale-2.png",
+        icon: "../../images/my/reach.png",
+        url: "../order/order?status=DELIVERED_CONFIRM_PENDING"
+      },
+      {
+        title: "退换/售后",
+        type: 6,
+        icon: "../../images/my/after_sale.png",
         url: "../order/order"
       }
     ],
@@ -32,7 +38,7 @@ Page({
         icon: "../../images/order_all.png",
         title: "全部订单",
         path: "../order/order",
-        status: 1
+        status: 2
       },
       // {
       //   icon: "../../images/team.png",
@@ -52,12 +58,12 @@ Page({
       //   path: "./team/holder",
       //   status: 0
       // },
-      {
-        icon: "../../images/address_manage.png",
-        title: "地址管理",
-        path: "../address/address",
-        status: 1
-      },
+      // {
+      //   icon: "../../images/address_manage.png",
+      //   title: "地址管理",
+      //   path: "../address/address",
+      //   status: 1
+      // },
       // {
       //   icon: "../../images/friend_manage.png",
       //   title: "好友信息",
@@ -79,6 +85,36 @@ Page({
       //   status: 1,
       //   openType: ""
       // }
+      {
+        icon: "../../images/my/collectGoods.png",
+        title: "收藏宝贝",
+        path: "./collection/index",
+        status: 3
+      },
+      {
+        icon: "../../images/my/addressMan.png",
+        title: "地址管理",
+        path: "../address/address",
+        status: 3
+      },
+      {
+        icon: "../../images/my/easyProblem.png",
+        title: "常见问题",
+        path: "./normalProblem/index",
+        status: 3
+      },
+      {
+        icon: "../../images/my/feedback.png",
+        title: "意见反馈",
+        path: "",
+        status: 3
+      },
+      {
+        icon: "../../images/my/coupon-img.png",
+        title: "优惠券",
+        path: "",
+        status: 3
+      },
     ],
     isShowPopup: false,
     passwordInput: '',
@@ -138,7 +174,8 @@ Page({
   /**
    * 个人信息
    */
-  getProfile(){
+  getProfile() {
+    var that = this
     app.getProfile(true, function (userProfile) {
       console.log("getProfile--userProfile==", userProfile)
       that.setData({
