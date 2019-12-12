@@ -1,10 +1,9 @@
 <!--pages/personal/collection/index.wxml-->
-<view class="container">
+<view class="container" id="collection">
   <van-card 
     tag="标签" 
     currency="￥" 
     price="10"
-    num="2" 
     origin-price="20"
     thumb="{{ imageURL }}"
     lazy-load="true"

@@ -1,4 +1,17 @@
-/* pages/personal/collection/index.wxss */
-.desc-css{
+#collection .van-card__content{
+  display: flex;
+  flex-direction: column;
+}
+
+#collection .van-card__bottom{
+  display: flex;
+  flex-direction: column;
+}
+
+#collection .van-card__origin-price{
+  margin-left: 0;
+}
+
+#collection .desc-css{
   flex: 1;
 }
