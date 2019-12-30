@@ -12,7 +12,9 @@ Page({
     inShow: false,
     deployView: true,
     animationData: {},
-    productData: {cover: '../../images/cart.jpg'},
+    productData: {
+      cover: '../../images/cart.jpg'
+    },
     selectIndex: -1,
     product_specification_id: -1
   },
@@ -58,17 +60,25 @@ Page({
       imgHeight: height
     })
   },
+
   openPage(e) {
     app.utils.openPage(e)
   },
+
+  //跳转购物车
+  openCartPage(e){
+    var url = e.currentTarget.dataset.url;
+    app.utils.openPage2(url, "switchTab", "")
+  },
+
   // 点击收藏调用该方法；
-  favorite: function (event) {
+  favorite: function(event) {
     var that = this
     var id = parseInt(event.currentTarget.dataset.id)
     console.log(id)
     var favorite = !that.data.favorite
 
-    if ( favorite ) {
+    if (favorite) {
       // 添加收藏；
       wx.request({
         url: app.globalData.URL_API + '/product_favorite', //仅为示例，并非真实的接口地址
@@ -80,7 +90,7 @@ Page({
           'Authorization': app.globalData.token,
           'content-type': 'json'
         },
-        success: function (res) {
+        success: function(res) {
           that.setData({
             favorite: favorite
           })
@@ -90,14 +100,13 @@ Page({
       // 取消收藏；
       wx.request({
         url: app.globalData.URL_API + '/product_favorite/' + id, //仅为示例，并非真实的接口地址
-        data: {
-        },
+        data: {},
         method: 'DELETE',
         header: {
           'Authorization': app.globalData.token,
           'content-type': 'json'
         },
-        success: function (res) {
+        success: function(res) {
           that.setData({
             favorite: favorite
           })
@@ -107,14 +116,14 @@ Page({
   },
 
   // 点击 加入购物车，立即购买 弹出窗口；
-  openDeploy: function (event) {
+  openDeploy: function(event) {
     var that = this
     var animation = wx.createAnimation({
       duration: 2000,
       timingFunction: 'ease',
     })
     this.animation = animation
-    animation.translate(0,0).step()
+    animation.translate(0, 0).step()
 
     that.setData({
       quantity: 1,
@@ -124,8 +133,8 @@ Page({
       animationData: animation.export()
     })
   },
-  reduce: function (event) {
-    if (this.data.quantity>1) {
+  reduce: function(event) {
+    if (this.data.quantity > 1) {
       this.data.quantity = this.data.quantity - 1
     } else {
       wx.showToast({
@@ -138,8 +147,8 @@ Page({
       quantity: this.data.quantity
     })
   },
-  add: function (event) {
-    if (this.data.quantity<this.data.productData.stock_balance) {
+  add: function(event) {
+    if (this.data.quantity < this.data.productData.stock_balance) {
       this.data.quantity = this.data.quantity + 1
     } else {
       wx.showToast({
@@ -148,13 +157,13 @@ Page({
       })
       this.data.quantity = productData.stock_balance
     }
-    
+
     this.setData({
       quantity: this.data.quantity
     })
   },
   //点击输入框调用防止跳转；
-  prevent: function () {
+  prevent: function() {
     // 什么都不用做；
   },
   cartCount() {
@@ -171,9 +180,10 @@ Page({
       cartCount: cartCount
     })
   },
-  addCart: function (event) {
+
+  addCart: function(event) {
     console.log('details.js--addCart--')
-    var id = parseInt( event.currentTarget.dataset.id )
+    var id = parseInt(event.currentTarget.dataset.id)
     var that = this
     if (!that.data.quantity || that.data.quantity < 1) {
       wx.showToast({
@@ -183,11 +193,14 @@ Page({
       })
       return;
     }
-    var post_data = [{ product_id: id, quantity: that.data.quantity }]
+    var post_data = [{
+      product_id: id,
+      quantity: that.data.quantity
+    }]
     app.webapi.updateCarts(true, post_data)
       .then(res => {
         console.log("updateCart--res==", res)
-        if (res.data.status_code === 0){
+        if (res.data.status_code === 0) {
           wx.setStorageSync("cart", res.data.data)
           wx.showToast({
             title: '已加入购物车',
@@ -255,7 +268,7 @@ Page({
       inShow: false
     })
   },
-  selectStandrd: function (event) {
+  selectStandrd: function(event) {
     var selectIndex = event.currentTarget.dataset.index
     this.data.product_specification_id = event.currentTarget.dataset.id
 
@@ -271,14 +284,22 @@ Page({
     app.webapi.getProductDetail(id)
       .then(res => {
         wx.hideLoading()
-        that.data.description = res.data.data.description
-        var description = res.data.data.description
-        WxParse.wxParse('description', 'html', description, that, 5);
         wx.stopPullDownRefresh()
-        that.setData({
-          productData: res.data.data,
-          inShow: that.data.inShow
-        })
+        var resData = res.data
+        if (resData.status_code == 0) {
+          that.data.description = res.data.data.description
+          var description = res.data.data.description
+          if (description) {
+            WxParse.wxParse('description', 'html', description, that, 5);
+          }
+          that.setData({
+            productData: res.data.data,
+            inShow: that.data.inShow
+          })
+        } else {
+          console.log("getProductDetail--res--error==", resData)
+        }
+
       })
       .catch(res => {
         console.log("getProductDetail--catch--res==", res)
@@ -288,7 +309,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     console.log('details--onLoad--options==', options)
     // var favoriteArr = app.globalData.favoriteArr
     // var favorite = false;
@@ -316,14 +337,14 @@ Page({
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady: function () {
-  
+  onReady: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function (options) {
+  onShow: function(options) {
     var that = this
     console.log('details--onshow--options==', options)
     var cart = wx.getStorageSync("cart")
@@ -336,14 +357,14 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function () {
-  
+  onHide: function() {
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload: function () {
+  onUnload: function() {
     this.setData({
       inShow: false,
     })
@@ -352,7 +373,7 @@ Page({
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh: function () {
+  onPullDownRefresh: function() {
     var that = this;
     that.getProductDetail(that.data.id)
   },
@@ -360,14 +381,14 @@ Page({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
-  
+  onReachBottom: function() {
+
   },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage: function () {
-  
+  onShareAppMessage: function() {
+
   }
 })

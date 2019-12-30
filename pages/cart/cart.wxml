@@ -44,7 +44,7 @@
       <button type="warn" class="delete-button" catchtap="delButton" data-index="{{index}}">删除</button>
     </view>
   </view>
-  <view class="carts-footer">
+  <view class="carts-footer" wx:if="{{productList.length > 0}}">
     <view class="foorer-text">
       <!-- <image class="select_all" src="../../images/select_no.png" />
 			<text class="select_all_link">全选</text> -->

@@ -74,6 +74,7 @@ Page({
       lightIndex: lightIndex
     })
   },
+
   getCategory() {
     var that = this
     var lightIndex = that.data.lightIndex
@@ -88,11 +89,12 @@ Page({
         wx.hideLoading()
         if (res.data.status_code === 0) {
           if (res.data.data) {
-            categoryData = [{
-              id: -1,
-              name: '全部'
-            }]
-            categoryData = categoryData.concat(res.data.data)
+            // categoryData = [{
+            //   id: -1,
+            //   name: '全部'
+            // }]
+            // categoryData = categoryData.concat(res.data.data)
+            categoryData = res.data.data
             app.globalData.categoryData = categoryData
             that.data.pageNum = 1
             // that.getAllProduct()
@@ -111,6 +113,7 @@ Page({
         wx.setStorageSync('categoryData', [])
       })
   },
+
   getAllProduct() {
     var that = this;
     var productList = that.data.productList;
@@ -145,6 +148,7 @@ Page({
         })
       })
   },
+
   getProduct(id) {
     var that = this;
     wx.showLoading({
@@ -152,7 +156,13 @@ Page({
     })
     var pageNum = that.data.pageNum
     var pageSize = that.data.pageSize
-    app.webapi.getProduct(id, pageNum, pageSize)
+    var cateId = id
+
+    if (cateId <= 0){
+      cateId = ""
+    }
+
+    app.webapi.getProduct(cateId, pageNum, pageSize)
       .then(res => {
         console.log("getProduct--res==", res)
         wx.hideLoading()
@@ -182,6 +192,20 @@ Page({
   onLoad: function(options) {
     console.log("categroy--onLoad--options==", options)
     var that = this;
+    console.log('categroy--onLoad--app.globalData.selFriend==', app.globalData.selFriend)
+    var categoryData = wx.getStorageSync('categoryData')
+    console.log("categroy--onshow--wx.getStorageSync('categoryData')==", categoryData)
+    if (!categoryData || !categoryData.length) {
+      that.getCategory()
+    } else {
+      // that.getAllProduct()
+      console.log("12312312312 == ", categoryData)
+      that.getProduct(categoryData[that.data.lightIndex].id)
+    }
+    that.setData({
+      categoryData: categoryData,
+      pageNum: 1
+    })
     
   },
 
@@ -197,19 +221,7 @@ Page({
    */
   onShow: function() {
     var that = this
-    console.log('categroy--onLoad--app.globalData.selFriend==', app.globalData.selFriend)
-    var categoryData = wx.getStorageSync('categoryData')
-    console.log("categroy--onshow--wx.getStorageSync('categoryData')==", categoryData)
-    if (!categoryData || !categoryData.length) {
-      that.getCategory()
-    } else {
-      // that.getAllProduct()
-      that.getProduct(categoryData[that.data.lightIndex].id)
-    }
-    that.setData({
-      categoryData: categoryData,
-      pageNum: 1
-    })
+    
   },
 
   /**

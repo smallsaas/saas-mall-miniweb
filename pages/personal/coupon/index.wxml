@@ -1,0 +1,36 @@
+<view class="container" id="coupon">
+  <van-tabs active="{{ active }}" color="#734284" line-width="70" line-height="2" bind:change="onChange">
+    <van-tab wx:for="{{ tabs }}" data-id="{{item.id}}" title="{{item.title}} ({{item.count}})">
+
+      <view class="pro-item">
+        <view class="p-i-left" wx:if="true">
+          <view class="title">打折券</view>
+          <view class="l-t-right">
+            <view class="r-top custom_text_primary_medium">
+              <view class="r-top-coupon-type">
+                <text>类型</text>
+              </view>
+              <view class="r-top-des">
+                <text>名字</text>
+              </view>
+            </view>
+            <view class="r-bottom">
+              <text>有效期至：</text>
+              <text>2019-12-21</text>
+            </view>
+          </view>
+          <view class="l-t-left custom_text_primary_medium">
+            <!-- <text style="font-size: 28rpx;" wx:if="{{false}}">￥0</text> -->
+            <view wx:if="{{true}}">
+                <text>折扣</text>
+                <text style="font-size: 16px; font-weight: bold"> 5 折</text>
+              </view>
+            <view class="css-circular-top"></view>
+            <view class="css-circular-bottom"></view>
+          </view>
+        </view>
+      </view>
+
+    </van-tab>
+  </van-tabs>
+</view>

@@ -29,7 +29,7 @@
     </view>
   </view> -->
 
-  <view class="fixed-top" style="">
+  <view class="fixed-top" style="" wx:if="{{false}}">
     <view class="search-row" style="">
       <input type="text" bindconfirm="bindinput" confirm-type="search" placeholder="搜索您要对接的资源" placeholder-style="font-size: 26rpx;">
       <image class="search-icon" mode="widthFix" src="../../images/search.png"></image>
@@ -70,7 +70,7 @@
     </view>
   </view>
 
-  <view class="order-details" wx:key="id" wx:if="{{recommend && recommendIndex >- 1}}">
+  <view class="order-details" wx:key="id" wx:if="{{false}}">
     <block wx:if="{{recommend[recommendIndex].banner}}">
       <image mode="widthFix" src="{{recommend[recommendIndex].banner}}"></image>
     </block>
@@ -163,18 +163,18 @@
 
     <view wx:for="{{rec_product}}" wx:key="id" style="margin-top: 8px;">
 
-      <view class="area_title">
-        <text>氧分子微粒</text>
+      <view class="area_title" bindtap="isGoToGoodsList" data-item="{{item}}">
+        <text>{{item.name}}</text>
         <image class="area_title_image" mode="widthFix" src="../../images/home/arrow.png" />
       </view>
 
       <view class="area_cover" wx:if="true">
-        <image mode="widthFix" src="../../images/home/product01.jpg" />
-        <view class="area_cover_name" wx:if="true">
+        <image mode="widthFix" src="{{ item.cover }}" />
+        <view class="area_cover_name" wx:if="{{ item.description }}">
           <view class="div1">
             <view class="div2">
               <view class="div3">
-                <text>泡一泡 , 就干净</text>
+                <text>{{ item.description }}</text>
                 <!-- <view ng-if="no_branch">{{productItem.description}}</view>
                 <view ng-if="des_branch">
                   <view ng-repeat="d_b_itemt in des_branch_list">{{d_b_itemt}}</view>
@@ -184,9 +184,19 @@
           </view>
         </view>
       </view>
+
+      <!-- 宫格导航 -->
+      <van-grid column-num="3" border="{{ false }}">
+        <van-grid-item use-slot wx:for="{{ item.products }}"  bindtap="openPage" data-url="../details/details?id={{item.id}}">
+          <image class="grid-item-image" src="{{ item.cover }}" />
+          <text class="grid-item-title">{{ item.short_name }}</text>
+          <text class="grid-item-price">￥{{ item.price }}</text>
+        </van-grid-item>
+      </van-grid>
+
     </view>
 
-    <!--<view id="homeProductGrids" class="area-product">
+    <!--<view id="homeProductGrids" class="area_product">
         <view class="weui_grid load-more-product" ng-show="home_load_more_btn_show">
           <view class="load-more-button">拼命加载中……</div>
         </view>

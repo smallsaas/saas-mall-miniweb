@@ -204,7 +204,7 @@ van-icon {
 
 .s-size-area {
   width: 100%;
-  margin-bottom: 52px;
+  /* margin-bottom: 52px; */
   background-color: #e3e3e3;
 }
 
@@ -256,10 +256,12 @@ van-icon {
 }
 
 .area_cover .area_cover_name .div1 .div2 .div3 {
-  min-height: 70rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 86rpx;
   font-size: 28rpx;
   color: #3d3d3d;
-  padding: 10px 10px;
   background-color: rgba(255, 255, 255, 0.80);
 }
 
@@ -270,7 +272,24 @@ van-icon {
   
 }
 
-.area-product {
+.s-size-area .grid-item-image{
+  width: 100%; 
+  height: 240rpx;
+  padding: 0 16rpx;
+}
+
+.s-size-area .grid-item-title{
+  margin:10rpx 0; 
+  font-size:26rpx;
+}
+
+.s-size-area .grid-item-price{
+  margin-top:10rpx; 
+  font-size:30rpx;
+  color: #F15353;
+}
+
+.area_product {
   /*margin: 2px 3px 0px 3px;*/
   padding: 8px 0;
   height: auto;

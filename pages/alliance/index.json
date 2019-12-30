@@ -1,6 +1,8 @@
 {
   "usingComponents": {
     "van-icon": "../../utils/vant/icon/index",
-    "van-dialog": "../../utils/vant/dialog/index"
+    "van-dialog": "../../utils/vant/dialog/index",
+    "van-grid": "../../utils/vant/grid/index",
+    "van-grid-item": "../../utils/vant/grid-item/index"
   }
 }

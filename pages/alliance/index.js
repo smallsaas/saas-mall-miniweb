@@ -22,6 +22,7 @@ Page({
     searchValue: '',
     rec_product:[],//商品列表
   },
+
   bindinput(e) {
     console.log("bindinput--e==", e)
     var that = this
@@ -38,9 +39,7 @@ Page({
     })
     // that.getAlliances()
   },
-  openPage(e) {
-    app.utils.openPage(e)
-  },
+
   showPopup(e) {
     var layer = e.currentTarget.dataset.layer
     // if (layer === "showUserAuth") {
@@ -49,16 +48,19 @@ Page({
     })
     // }
   },
+
   hidePopup(e) {
     var layer = e.currentTarget.dataset.layer
     this.setData({
       [layer]: false
     })
   },
+
   openPage(e) {
     console.log("openPage--e==", e)
     app.utils.openPage(e)
   },
+
   randomNum() {
     var that = this;
     let recommendIndex = -1;
@@ -80,6 +82,23 @@ Page({
       recommendIndex: recommendIndex,
     })
   },
+
+  // 判断商品跳转
+  isGoToGoodsList(e){
+    console.log("item === ", e)
+    var item = e.currentTarget.dataset.item;
+    var isShowProducts = item.is_show_products;
+    var id = 0;
+    if (isShowProducts == 0){
+      id = item.products[0].id;
+      app.utils.openPage2("../details/details?id=" + id, "redirect", "");
+    }else{
+      id = item.id
+      console.log("分类 == ", )
+      app.utils.openPage2("../category/category?id=" + id, "switchTab", "");
+    }
+  },
+
   getRecommend() {
     var that = this;
     var recommend = [];
@@ -104,6 +123,8 @@ Page({
         wx.setStorageSync('recommend', [])
       })
   },
+
+  // 获取盟友订单信息
   getAllianceOrder(userId) {
     var that = this
     wx.showLoading({
@@ -249,7 +270,7 @@ Page({
 
     app.getProfile(true, function (userProfile) {
       console.log("alliance--getProfile--userProfile==", userProfile)
-      that.getAllianceOrder(userProfile.id)
+      // that.getAllianceOrder(userProfile.id)
       that.setData({
         userProfile: userProfile
       })

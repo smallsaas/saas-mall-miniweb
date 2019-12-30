@@ -106,13 +106,13 @@ Page({
       {
         icon: "../../images/my/feedback.png",
         title: "意见反馈",
-        path: "",
+        path: "./feedback/index",
         status: 3
       },
       {
         icon: "../../images/my/coupon-img.png",
         title: "优惠券",
-        path: "",
+        path: "./coupon/index",
         status: 3
       },
     ],

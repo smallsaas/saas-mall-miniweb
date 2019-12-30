@@ -15,7 +15,7 @@
         <view class="user-detail">
 
           <view class="use_div">
-            <text style="margin-right:14rpx;">{{userProfile.real_name}}</text>
+            <text style="margin-right:14rpx;">{{userProfile.name}}</text>
             <text wx:if="{{userProfile.followed == 1}}" class="owner_tag custom_text_primary_medium">已关注</text>
           </view>
 
@@ -23,7 +23,7 @@
             ID： {{userProfile.uid}}
           </view>
 
-          <view wx:if="{{userProfile.followed != null}}" class="user-lv-text">
+          <view wx:if="{{userProfile.followed && userProfile.follow_time}}" class="user-lv-text">
             关注时间：
             <block wx:if="{{userProfile.follow_time != null}}">{{userProfile.follow_time}}</block>
           </view>

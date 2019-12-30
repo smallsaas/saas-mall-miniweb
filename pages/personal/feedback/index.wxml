@@ -1,0 +1,30 @@
+<!--pages/personal/feedback/index.wxml-->
+<view class="container" id="feedback">
+  <view class="question-body">
+    <view class="a-p-text">
+      问题和意见
+    </view>
+    <view class="q-input">
+      <van-cell-group>
+        <van-field 
+          value="{{ message }}" 
+          type="textarea" 
+          placeholder="请输入留言" 
+          autosize border="{{ false }}" />
+      </van-cell-group>
+    </view>
+  </view>
+
+  <view class="imgList-body">
+    <view class="a-p-text">
+      添加图片（选填，提供问题截图, 长按删除）
+    </view>
+    <view class="select-img">
+      <van-uploader file-list="{{ imgList }}" />
+    </view>
+  </view>
+
+  <view class="submit">
+    <van-button color="#7232dd" size="large">单色按钮</van-button>
+  </view>
+</view>

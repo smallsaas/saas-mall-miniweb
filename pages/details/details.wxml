@@ -62,13 +62,16 @@
   <view class="cut-line"></view>
 
   <!-- <view class="borderView"> </view> -->
-  <view class="flex-row description-link">
-    <image src="../../images/details/product-imgs-icon.png"></image>
-    <text>图文详情</text>
+  <view wx:if="{{productData.description}}">
+    <view class="flex-row description-link">
+      <image src="../../images/details/product-imgs-icon.png"></image>
+      <text>图文详情</text>
+    </view>
+    <view class="wxParse">
+      <template is="wxParse" data="{{wxParseData:description.nodes}}" />
+    </view>
   </view>
-  <view class="wxParse">
-    <template is="wxParse" data="{{wxParseData:description.nodes}}" />
-  </view>
+  
 
   <view class="footer">
     <view class="left-footer">
@@ -84,7 +87,7 @@
         <image src="../../images/{{ favorite?'favorite_yes.png':'favorite_no.png'}}"></image>
         <text class="{{favorite?'light':''}}">收藏</text>
       </view> -->
-      <view class="leftItem" bindtap="openPage" data-url="../cart/cart">
+      <view class="leftItem" bindtap="openCartPage" data-url="../cart/cart">
         <!-- <image src="../../images/cart.png"></image> -->
         <van-icon name="shopping-cart-o" size="25px" info="{{ cart.length > 99 ? '99+' : (cart.length > 0 ? cart.length : '')  }}" />
         <text style="color: #999" hover-class="hoverView">购物车</text>

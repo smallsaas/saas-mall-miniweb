@@ -1,6 +1,5 @@
 {
   "pages": [
-    "pages/personal/collection/index",
     "pages/alliance/index",
     "pages/category/category",
     "pages/index/index",
@@ -39,7 +38,10 @@
     "pages/personal/amount/recharge/index",
     "pages/personal/amount/recharge/list",
     "pages/personal/wallet",
-    "pages/personal/normalProblem/index"
+    "pages/personal/normalProblem/index",
+    "pages/personal/collection/index",
+    "pages/personal/coupon/index",
+    "pages/personal/feedback/index"
   ],
   "window": {
     "backgroundTextStyle": "dark",

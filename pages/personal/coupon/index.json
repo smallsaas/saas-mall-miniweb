@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "优惠券",
+  "usingComponents": {
+    "van-tab": "../../utils/vant/tab/index",
+    "van-tabs": "../../utils/vant/tabs/index"
+  }
+}

@@ -1,7 +1,7 @@
 //app.js
 const utils = require('./utils/util.js')
 const webapi = require('./webapi/index.js')
-var URL_API = 'https://api.cloud.biliya.cn/rest'
+var URL_API = 'https://mall.smallsaas.cn/rest'
 
 App({
   utils: utils,
@@ -73,11 +73,11 @@ App({
         wx.hideLoading()
         if (res.data.status_code === 0) {
           if (res.data.data) {
-            categoryData = [{
-              id: -1,
-              name: '全部'
-            }]
-            categoryData = categoryData.concat(res.data.data)
+            // categoryData = [{
+            //   id: -1,
+            //   name: '全部'
+            // }]
+            // categoryData = categoryData.concat(res.data.data)
             that.globalData.categoryData = categoryData
           }
           console.log("res--data---list==22222", categoryData)
@@ -304,12 +304,8 @@ App({
             //   typeof (cb) == 'function' && cb(res)
             // }
             if (res.data.data) {
-              if (res.data.data.phone) {
-                wx.setStorageSync("user_profile", res.data.data)
-                typeof (cb) == 'function' && cb(res.data.data)
-              } else {
-                // utils.openPage2("/pages/register/index", "redirect")
-              }
+              wx.setStorageSync("user_profile", res.data.data)
+              typeof (cb) == 'function' && cb(res.data.data)
             } else {
               typeof (cb) == 'function' && cb("")
             }
@@ -367,12 +363,12 @@ App({
     userInfo: null,
     categoryData: [],
     // URL_API: 'https://www.kequandian.net/rest',
-    URL_API: "https://api.cloud.biliya.cn/rest",
+    URL_API: "https://mall.smallsaas.cn/rest",
     // URL_API: "https://biliya.zele.pro/rest",
     favoriteArr: {},
     addressArr: [],
     token: null,
-    token: "eyJsb2dpbl9uYW1lIjoib05oVGQ0cDliMXpHNkJPTXRoTDUyNXcyT2RoZyIsImlkIjoiNSIsInRva2VuIjoiMmQ2NmFhZTQwYmYzNmM0NjNmNGYyMTk2ODYyN2EyOTcwMzBiOWY3MiJ9",
+    token: "eyJsb2dpbl9uYW1lIjoib3d3NDR0OE83RUdxTDQzOVJPVHhYYklXOThpWSIsImlkIjoiMyIsInRva2VuIjoiNmJjNzliNzljNGZjNjhjZDUwZDM4NTJmMTFmZWQ5NzAwOGM0MGIzZSJ9",
     selCartJson: null,
     selFriend: null,
     allianceData: null,

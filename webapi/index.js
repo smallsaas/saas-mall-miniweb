@@ -1,6 +1,6 @@
 import utils from "../utils/util";
 let app = getApp()
-const API_HOST = 'https://api.cloud.biliya.cn/rest'
+const API_HOST = 'https://mall.smallsaas.cn/rest'
 
 // 登录；
 function apiLogin(params) {
@@ -69,7 +69,9 @@ function getCategory(promoted) {
   let app = getApp()
   return utils.promisify(wx.request)({
     url: API_HOST + "/product_category",
-    data: {},
+    data: {
+      promoted: true
+    },
     header: {
       "Authorization": app.globalData.token,
       "content-type": "application/json"

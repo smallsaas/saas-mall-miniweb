@@ -1,0 +1,36 @@
+#feedback{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+#feedback .question-body {
+  display: flex;
+  flex-direction: column;
+}
+
+#feedback .q-input{
+  padding: 16rpx 0;
+  background-color: #ffffff;
+}
+
+#feedback .a-p-text{
+    width: 100%;
+    height: 42px;
+    line-height: 42px;
+    font-size: 14px;
+    padding-left: 10px;
+}
+
+#feedback .imgList-body{
+  flex: 1;
+}
+
+#feedback .select-img{
+  padding: 16rpx;
+  background-color: #ffffff;
+}
+
+#feedback .submit{
+  padding: 10px;
+}
