@@ -18,6 +18,8 @@
   background-color: white;
   /*border: 1px solid #734284;*/
   position: relative;
+  overflow: hidden;
+  
 }
 
 #coupon .pro-item .p-i-left {

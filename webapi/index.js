@@ -713,6 +713,41 @@ function getAllianceMeal() {
     }
   });
 }
+
+//获取优惠券
+function getCoupons(status, pageNumber, pageSize){
+  let app = getApp()
+  return utils.promisify(wx.request)({
+    url: API_HOST + "/coupon",
+    data: {
+      status: status,
+      pageNumber: pageNumber,
+      pageSize: pageSize
+    },
+    header: {
+      "Authorization": app.globalData.token,
+      "content-type": "application/json",
+    }
+  });
+}
+
+//激活优惠券
+function activeCoupon(id) {
+  let app = getApp()
+  return utils.promisify(wx.request)({
+    url: API_HOST + "/coupon/" + id,
+    data: {
+      status:'ACTIVATION'
+    },
+    method: "PUT",
+    header: {
+      "Authorization": app.globalData.token,
+      "content-type": "application/json",
+    }
+  });
+}
+
+
 module.exports = {
   API_HOST,
   apiLogin,
@@ -769,5 +804,7 @@ module.exports = {
   getAllianceDetails,
   changeship,
   updateAlliance,
-  getAllianceMeal
+  getAllianceMeal,
+  getCoupons,
+  activeCoupon
 }

@@ -553,3 +553,36 @@ view {
   padding-top: 0!important; 
   background: #f2f2f2!important;
 }
+
+/* 头部按钮 */
+.go-home{
+    width: 76rpx;
+    height: 76rpx;
+    /*background-color: #007aff;*/
+    top: 15px;
+    right: 12px;
+    /* bottom: 15px; */
+    position: fixed;
+    z-index: 1;
+}
+
+.go-home image{
+    width: 35px;
+    height: 35px;
+}
+
+.my-collection {
+    width: 76rpx;
+    height: 76rpx;
+    /*background-color: #007aff;*/
+    top: 15px;
+    right: 55px;
+    /* bottom: 15px; */
+    position: fixed;
+    z-index: 1;
+}
+
+.my-collection image {
+    width: 35px;
+    height: 35px;
+}

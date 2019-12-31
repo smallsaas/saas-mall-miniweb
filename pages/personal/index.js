@@ -88,7 +88,7 @@ Page({
       {
         icon: "../../images/my/collectGoods.png",
         title: "收藏宝贝",
-        path: "./collection/index",
+        path: "../favorite/favorite",
         status: 3
       },
       {

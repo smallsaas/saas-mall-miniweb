@@ -16,7 +16,8 @@ Page({
       cover: '../../images/cart.jpg'
     },
     selectIndex: -1,
-    product_specification_id: -1
+    product_specification_id: -1,
+    isFavorite:false
   },
   getInputBlur(e) {
     console.log("getInput--e==", e)
@@ -66,7 +67,7 @@ Page({
   },
 
   //跳转购物车
-  openCartPage(e){
+  openTabPage(e){
     var url = e.currentTarget.dataset.url;
     app.utils.openPage2(url, "switchTab", "")
   },
@@ -76,9 +77,11 @@ Page({
     var that = this
     var id = parseInt(event.currentTarget.dataset.id)
     console.log(id)
-    var favorite = !that.data.favorite
+    console.log(that.data.isFavorite)
 
-    if (favorite) {
+    var isFavorite = !that.data.isFavorite
+
+    if (isFavorite) {
       // 添加收藏；
       wx.request({
         url: app.globalData.URL_API + '/product_favorite', //仅为示例，并非真实的接口地址
@@ -91,9 +94,23 @@ Page({
           'content-type': 'json'
         },
         success: function(res) {
-          that.setData({
-            favorite: favorite
-          })
+          var data = res.data;
+          if(data.status_code == 0){
+            wx.showToast({
+              title: '收藏成功',
+              icon: '',
+              duration: 1500
+            })
+            that.setData({
+              isFavorite: isFavorite
+            })
+          }else{
+            wx.showToast({
+              title: '收藏失败',
+              duration: 1500
+            })
+          }
+          
         }
       });
     } else {
@@ -107,9 +124,21 @@ Page({
           'content-type': 'json'
         },
         success: function(res) {
-          that.setData({
-            favorite: favorite
-          })
+          var data = res.data
+          if(data.status_code == 0){
+            wx.showToast({
+              title: '取消收藏',
+              duration: 1500
+            })
+            that.setData({
+              isFavorite: isFavorite
+            })
+          } else {
+            wx.showToast({
+              title: '取消失败',
+              duration: 1500
+            })
+          }
         }
       });
     }
@@ -276,6 +305,8 @@ Page({
       selectIndex: selectIndex
     })
   },
+
+  // 获取商品详情
   getProductDetail(id) {
     var that = this;
     wx.showLoading({
@@ -294,7 +325,8 @@ Page({
           }
           that.setData({
             productData: res.data.data,
-            inShow: that.data.inShow
+            inShow: that.data.inShow,
+            isFavorite: res.data.data.favorited == 1 ? true : false
           })
         } else {
           console.log("getProductDetail--res--error==", resData)

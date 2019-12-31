@@ -93,8 +93,7 @@ Page({
             //   id: -1,
             //   name: '全部'
             // }]
-            // categoryData = categoryData.concat(res.data.data)
-            categoryData = res.data.data
+            categoryData = categoryData.concat(res.data.data)
             app.globalData.categoryData = categoryData
             that.data.pageNum = 1
             // that.getAllProduct()

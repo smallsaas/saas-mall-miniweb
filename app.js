@@ -142,6 +142,7 @@ App({
         console.log("wx.login--catch--res==", res)
       })
   },
+  
   getUserInfo: function (cb) {
     var that = this
     if (this.globalData.userInfo) {
@@ -157,6 +158,7 @@ App({
       })
     }
   },
+
   getAllianceOrder(cb) {
     this.isRuning = true;
     wx.showLoading({
@@ -192,10 +194,12 @@ App({
         typeof (cb) === 'function' && cb('')
       })
   },
+
   checkWalletPassword(cb) {
     var that = this;
     // that.webapi
   },
+
   // 钱包支付；
   walletPay(e, orderData, page, cb) {
     var that = this;
@@ -266,9 +270,14 @@ App({
         // console.log(res.data.data)
         // that.globalData.favoriteArr = res.data.data
         // console.log(that.globalData.favoriteArr)
+        var data = res.data
+        if (data.status_code == 0) {
+          that.globalData.favoriteArr = data.data
+          callback(res.data.data)
+        }else{
+          console.log("获取收藏信息失败")
+        }
 
-        that.globalData.favoriteArr = res.data.data
-        callback(res.data.data)
       }
     });
   },
@@ -368,7 +377,7 @@ App({
     favoriteArr: {},
     addressArr: [],
     token: null,
-    token: "eyJsb2dpbl9uYW1lIjoib3d3NDR0OE83RUdxTDQzOVJPVHhYYklXOThpWSIsImlkIjoiMyIsInRva2VuIjoiNmJjNzliNzljNGZjNjhjZDUwZDM4NTJmMTFmZWQ5NzAwOGM0MGIzZSJ9",
+    token: "eyJsb2dpbl9uYW1lIjoib3d3NDR0OE83RUdxTDQzOVJPVHhYYklXOThpWSIsImlkIjoiOTEiLCJ0b2tlbiI6IjIxMDdmODliNzRjODYyNDY2ZWIzODFlZmU2NTI0NDlmODNkMGYyZWUifQ==",
     selCartJson: null,
     selFriend: null,
     allianceData: null,

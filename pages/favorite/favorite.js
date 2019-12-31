@@ -6,7 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    favoriteArr: app.globalData.favoriteArr,
+    favoriteArr: [],
     startX: 0,
     itemLefts: []
   },
@@ -64,6 +64,7 @@ Page({
       itemLefts: []
     });
   },
+
   // 手指触摸后移动系统自动调用该方法；
   touchMove: function (event) {
     var index = event.currentTarget.dataset.index     // 下标；
@@ -78,6 +79,7 @@ Page({
       itemLefts: itemLefts
     })
   },
+
   // 手指触摸动作结束系统自动调用该方法；
   touchEnd: function(event) {
       var index = event.currentTarget.dataset.index
@@ -152,11 +154,11 @@ Page({
     //   favoriteArr: favoriteArr
     // })
     var _this = this
-    app.getFavorite(function() {
+    app.getFavorite(function () {
       console.log('-----index----onshow-----')
       console.log(app.globalData.favoriteArr)
       _this.setData({
-        favoriteArr: app.globalData.favoriteArr,
+        favoriteArr: app.globalData.favoriteArr.list,
         itemLefts: []
       })
     });

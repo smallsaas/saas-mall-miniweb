@@ -87,7 +87,7 @@
         <image src="../../images/{{ favorite?'favorite_yes.png':'favorite_no.png'}}"></image>
         <text class="{{favorite?'light':''}}">收藏</text>
       </view> -->
-      <view class="leftItem" bindtap="openCartPage" data-url="../cart/cart">
+      <view class="leftItem" bindtap="openTabPage" data-url="../cart/cart">
         <!-- <image src="../../images/cart.png"></image> -->
         <van-icon name="shopping-cart-o" size="25px" info="{{ cart.length > 99 ? '99+' : (cart.length > 0 ? cart.length : '')  }}" />
         <text style="color: #999" hover-class="hoverView">购物车</text>
@@ -142,6 +142,18 @@
       <button class="deploy-button" wx:if="{{button=='buy'}}" data-id="{{ productData.id }}" bindtap="buyNow">立即购买</button>
     </view>
   </view> -->
+
+  <view class="go-home" bindtap="openTabPage" data-url="../alliance/index">
+    <image src="../../images/home/home.png"/>
+  </view>
+  <view class="my-collection" bindtap="favorite" data-id="{{ productData.id }}">
+    <block wx:if="{{isFavorite}}">
+      <image src="../../images/home/details-collection-on.png"/>
+    </block>
+    <block wx:else>
+      <image src="../../images/home/details-collection.png"/>
+    </block>
+  </view>
 
 </view>
 
