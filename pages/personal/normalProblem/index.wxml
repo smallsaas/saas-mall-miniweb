@@ -1,7 +1,7 @@
 <import src="../../../wxParse/wxParse.wxml" />
 
 <view class="container">
-  <van-collapse value="{{ activeName }}" bind:change="onChange" accordion>
+  <!-- <van-collapse value="{{ activeName }}" bind:change="onChange" accordion>
     <van-collapse-item name="1">
       <view slot="title" class="item-title">
         <view class="custom_flat_primary_medium icon-css">1</view>
@@ -23,5 +23,33 @@
       </view>
       关于积分
     </van-collapse-item>
-  </van-collapse>
+  </van-collapse> -->
+
+  <!-- 问题列表 -->
+  <van-cell-group>
+    <van-cell is-link wx:for="{{ problemList }}" bind:click="onClickShow" data-id="{{item.id}}">
+      <view slot="title" class="comm-pro-item" >
+        <view class="numberImg custom_flat_primary_medium">{{index + 1}}</view>
+        <view>{{item.name}}</view>
+      </view>
+    </van-cell>
+  </van-cell-group>
+
+  <!-- 遮罩层 -->
+  <van-popup show="{{ show }}" bind:close="onClickHide">
+    <view class="wrapper">
+      <view class="block" >
+
+        <view class="problem-title custom_flat_primary_medium">
+          {{problemData.title}}
+        </view>
+        <view class="problem-content">
+          <view class="wxParse">
+          <template is="wxParse" data="{{wxParseData:problemDes.nodes}}" />
+        </view>
+        </view>
+        
+      </view>
+    </view>
+  </van-popup>
 </view>

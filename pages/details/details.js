@@ -320,6 +320,7 @@ Page({
         if (resData.status_code == 0) {
           that.data.description = res.data.data.description
           var description = res.data.data.description
+          console.log("description==", description)
           if (description) {
             WxParse.wxParse('description', 'html', description, that, 5);
           }

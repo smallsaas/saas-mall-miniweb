@@ -747,6 +747,36 @@ function activeCoupon(id) {
   });
 }
 
+//获取常见问题列表
+function getNormalProblems(){
+  let app = getApp()
+  return utils.promisify(wx.request)({
+    url: API_HOST + "/faq_type",
+    data: {},
+    header: {
+      "Authorization": app.globalData.token,
+      "content-type": "application/json",
+    }
+  });
+}
+
+//获取常见问题
+function getNormalProblemById(id) {
+  let app = getApp()
+  return utils.promisify(wx.request)({
+    url: API_HOST + "/faq",
+    data: {
+      typeId: id,
+      pageNumber:1, 
+      pageSize:20
+    },
+    header: {
+      "Authorization": app.globalData.token,
+      "content-type": "application/json",
+    }
+  });
+}
+
 
 module.exports = {
   API_HOST,
@@ -806,5 +836,7 @@ module.exports = {
   updateAlliance,
   getAllianceMeal,
   getCoupons,
-  activeCoupon
+  activeCoupon,
+  getNormalProblems,
+  getNormalProblemById 
 }

@@ -5,15 +5,15 @@ Page({
 
   /**
    * 页面的初始数据
+   * { "id": 2, "title": "未领取", "count": 0, "status": "NON_ACTIVATION" },
    */
   data: {
     active: 0,
     currentStatus:'ACTIVATION',
     tabs:[
       { "id": 1, "title": "可使用", "count": 0, "status": "ACTIVATION" },
-      { "id": 2, "title": "未领取", "count": 0, "status": "NON_ACTIVATION" },
-      { "id": 3, "title": "已使用", "count": 0, "status": "USED" },
-      { "id": 4, "title": "已失效", "count": 0, "status": "OVERDUE" }
+      { "id": 2, "title": "已使用", "count": 0, "status": "USED" },
+      { "id": 3, "title": "已失效", "count": 0, "status": "OVERDUE" }
     ],
     couponList:[],
     pageNumber:1,
@@ -26,11 +26,13 @@ Page({
     var status = "";
     if (selectIndex == 0){
       status = "ACTIVATION"
-    } else if (selectIndex == 1) {
-      status = "NON_ACTIVATION"
-    } else if (selectIndex == 2) {
+    } 
+    // else if (selectIndex == 1) {
+    //   status = "NON_ACTIVATION"
+    // } 
+    else if (selectIndex == 1) {
       status = "USED"
-    } else if (selectIndex == 3) {
+    } else if (selectIndex == 2) {
       status = "OVERDUE"
     }
     this.setData({
@@ -51,9 +53,9 @@ Page({
         if (data.status_code === 0) {
           var tabsData = that.data.tabs
           tabsData[0].count = data.data.ACTIVATION > 0 ? data.data.ACTIVATION : 0;
-          tabsData[1].count = data.data.NON_ACTIVATION > 0 ? data.data.NON_ACTIVATION : 0;
-          tabsData[2].count = data.data.USED > 0 ? data.data.USED : 0;
-          tabsData[3].count = data.data.OVERDUE > 0 ? data.data.OVERDUE : 0;
+          // tabsData[1].count = data.data.NON_ACTIVATION > 0 ? data.data.NON_ACTIVATION : 0;
+          tabsData[1].count = data.data.USED > 0 ? data.data.USED : 0;
+          tabsData[2].count = data.data.OVERDUE > 0 ? data.data.OVERDUE : 0;
           that.setData({
             tabs: tabsData,
           })

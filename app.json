@@ -62,7 +62,7 @@
       },
       {
         "pagePath": "pages/category/category",
-        "text": "商品",
+        "text": "分类",
         "iconPath": "images/note.png",
         "selectedIconPath": "images/note-actived.png"
       },
