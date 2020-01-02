@@ -1,8 +1,5 @@
 {
   "navigationBarTitleText": "意见反馈",
   "usingComponents": {
-    "van-field": "../../utils/vant/field/index",
-    "van-button": "../../utils/vant/button/index",
-    "van-uploader": "../../utils/vant/uploader/index"
   }
 }

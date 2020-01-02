@@ -1,30 +1,49 @@
 <!--pages/personal/feedback/index.wxml-->
-<view class="container" id="feedback">
-  <view class="question-body">
-    <view class="a-p-text">
-      问题和意见
-    </view>
-    <view class="q-input">
-      <van-cell-group>
-        <van-field 
-          value="{{ message }}" 
-          type="textarea" 
-          placeholder="请输入留言" 
-          autosize border="{{ false }}" />
-      </van-cell-group>
-    </view>
-  </view>
 
-  <view class="imgList-body">
-    <view class="a-p-text">
-      添加图片（选填，提供问题截图, 长按删除）
+<form bindsubmit="subForm">
+  <view class="container" id="feedback">
+    <view class="question-body">
+      <view class="a-p-text">
+        问题和意见
+      </view>
+      <view class="q-input">
+        <!-- <van-cell-group>
+          <van-field 
+            value="{{ feedBackSub.content }}" 
+            type="textarea" 
+            placeholder="请输入留言" 
+            autosize border="{{ false }}" 
+            bindinput="contentText"
+            />
+            
+        </van-cell-group> -->
+        <input name="fContent" type="textarea" bindinput="contentTextInput"  value="{{ feedBackSub.content }}" placeholder="请输入留言" class="content_input" />
+      </view>
     </view>
-    <view class="select-img">
-      <van-uploader file-list="{{ imgList }}" />
-    </view>
-  </view>
 
-  <view class="submit">
-    <van-button color="#7232dd" size="large">单色按钮</van-button>
+    <view class="imgList-body">
+      <view class="a-p-text">
+        添加图片（选填，提供问题截图, 长按删除）
+      </view>
+      <view class="select-img">
+        <!-- <van-uploader 
+          file-list="{{ imgList }}" 
+          use-before-read
+          bind:before-read="beforeRead"
+          bind:after-read="afterRead" 
+          /> -->
+          <view class="upload-imgs">
+            <block wx:for="{{feedBackSub.image_list}}" >
+              <image bindtap="delImg" data-img-index="{{index}}" class="upload-item" src="{{item}}"></image>
+            </block>
+            <image class="upload-item" bindtap="chooseImage" src="../../../images/add_img.png"></image>
+          </view>
+      </view>
+    </view>
+
+    <view class="submit">
+      <!-- <van-button color="#A95296" size="large"  form-type="submit">提交</van-button> -->
+      <button class="sub-btn custom_flat_primary_medium" form-type="submit" style="color:#ffffff" >提交</button>
+    </view>
   </view>
-</view>
+</form>

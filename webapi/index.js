@@ -777,6 +777,36 @@ function getNormalProblemById(id) {
   });
 }
 
+//上传图片base64格式
+function uploadImage(data){
+  let app = getApp()
+  return utils.promisify(wx.request)({
+    url: API_HOST + "/upload_image",
+    data: data,
+    method:'POST',
+    header: {
+      "Authorization": app.globalData.token,
+      "content-type": "application/json",
+    }
+  });
+}
+
+function postFeedBackInfo(data){
+  let app = getApp()
+  return utils.promisify(wx.request)({
+    url: API_HOST + "/feedback",
+    data: {
+      "content": data.content,
+      "images": data.image_list
+    },
+    method: 'POST',
+    header: {
+      "Authorization": app.globalData.token,
+      "content-type": "application/json",
+    }
+  });
+}
+
 
 module.exports = {
   API_HOST,
@@ -838,5 +868,7 @@ module.exports = {
   getCoupons,
   activeCoupon,
   getNormalProblems,
-  getNormalProblemById 
+  getNormalProblemById,
+  uploadImage,
+  postFeedBackInfo
 }
