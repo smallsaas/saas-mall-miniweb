@@ -7,17 +7,16 @@
         问题和意见
       </view>
       <view class="q-input">
-        <!-- <van-cell-group>
+        <van-cell-group border="{{ false }}">
           <van-field 
-            value="{{ feedBackSub.content }}" 
             type="textarea" 
-            placeholder="请输入留言" 
-            autosize border="{{ false }}" 
-            bindinput="contentText"
+            placeholder="请输入问题和意见" 
+            autosize 
+            border="{{ false }}" 
+            bindchange="contentTextInput"
             />
-            
-        </van-cell-group> -->
-        <input name="fContent" type="textarea" bindinput="contentTextInput"  value="{{ feedBackSub.content }}" placeholder="请输入留言" class="content_input" />
+        </van-cell-group>
+        <!-- <input name="fContent" type="textarea" bindinput="contentTextInput"  value="{{ feedBackSub.content }}" placeholder="请输入问题和意见" class="content_input" /> -->
       </view>
     </view>
 

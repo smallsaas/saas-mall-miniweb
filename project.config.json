@@ -13,7 +13,7 @@
 		"coverView": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.9.3",
+	"libVersion": "2.9.4",
 	"appid": "wxe6c9f3e8447a3e35",
 	"projectname": "zero-wxa",
 	"debugOptions": {

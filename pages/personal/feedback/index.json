@@ -1,5 +1,7 @@
 {
   "navigationBarTitleText": "意见反馈",
   "usingComponents": {
+    "van-field": "../../utils/vant/field/index",
+    "van-cell-group": "../../utils/vant/cell-group/index"
   }
 }

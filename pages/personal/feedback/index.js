@@ -29,7 +29,6 @@ Page({
     var that = this
     var feedBackSub = that.data.feedBackSub
 
-    console.log("提交数据 == ", feedBackSub)
     if (!feedBackSub.content){
       wx.showToast({
         title: "请输入反馈内容",
@@ -37,6 +36,9 @@ Page({
       })
       return;
     }
+
+    console.log("提交数据 == ", feedBackSub)
+    return
 
     app.webapi.postFeedBackInfo(feedBackSub)
       .then(res => {
@@ -60,10 +62,8 @@ Page({
 
   // 评价内容；
   contentTextInput: function (event) {
-    console.log('contentTextInput---event', event)
     var that = this
     var value = event.detail
-    console.log('contentTextInput---value', value)
     var feedBackSub = that.data.feedBackSub
     feedBackSub.content = value
     that.setData({
