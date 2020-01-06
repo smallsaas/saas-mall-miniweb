@@ -14,7 +14,8 @@ Page({
     pageNum: 1,
     pageSize: 30,
     categoryData: [],
-    productList: []
+    productList: [],
+    cateId:""
     // categoryImg: ['sthl.png', 'mbhl.png', 'kqhl.png', 'nxhl.png', 'xfxl.png', 'hfxl.png', 'wyqj.png', 'cfqj.png', 'jwqj.png', 'jjqj.png', 'myxh.png']
   },
   openPage(e) {
@@ -77,6 +78,7 @@ Page({
 
   getCategory() {
     var that = this
+    var categoryId = app.globalData.categoryId; //分类ID
     var lightIndex = that.data.lightIndex
     console.log('that.data.lightIndex==', that.data.lightIndex)
     var categoryData = []
@@ -96,14 +98,22 @@ Page({
             categoryData = categoryData.concat(res.data.data)
             app.globalData.categoryData = categoryData
             that.data.pageNum = 1
-            // that.getAllProduct()
-            that.getProduct(categoryData[that.data.lightIndex].id)
+
+            categoryData.map((item, index) => {
+              if (categoryId == item.id){
+                lightIndex = index
+              }
+            })
+
+            that.getProduct(categoryData[lightIndex].id)
           }
           // that.getProduct(res.data.data[lightIndex].id)
         }
         wx.setStorageSync('categoryData', categoryData)
         that.setData({
-          categoryData: categoryData
+          categoryData: categoryData,
+          lightIndex: lightIndex,
+          cateId: categoryId
         })
       })
       .catch(res => {
@@ -148,6 +158,7 @@ Page({
       })
   },
 
+  //根据分类ID获取商品列表
   getProduct(id) {
     var that = this;
     wx.showLoading({
@@ -185,20 +196,19 @@ Page({
         wx.stopPullDownRefresh()
       })
   },
+
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function(options) {
-    console.log("categroy--onLoad--options==", options)
     var that = this;
-    console.log('categroy--onLoad--app.globalData.selFriend==', app.globalData.selFriend)
+    // console.log('categroy--onLoad--app.globalData.selFriend==', app.globalData.selFriend)
     var categoryData = wx.getStorageSync('categoryData')
-    console.log("categroy--onshow--wx.getStorageSync('categoryData')==", categoryData)
+    // console.log("categroy--onshow--wx.getStorageSync('categoryData')==", categoryData)
     if (!categoryData || !categoryData.length) {
       that.getCategory()
     } else {
       // that.getAllProduct()
-      console.log("12312312312 == ", categoryData)
       that.getProduct(categoryData[that.data.lightIndex].id)
     }
     that.setData({
@@ -220,6 +230,24 @@ Page({
    */
   onShow: function() {
     var that = this
+    var categoryId = app.globalData.categoryId; //新分类ID
+    var currentCateId = that.data.cateId; //以保存的分类ID
+    var lightIndex = that.data.lightIndex
+    if (categoryId != currentCateId){
+      console.log("=== 更新cateId ===")
+
+      that.data.categoryData.map((item, index) => {
+        if (categoryId == item.id) {
+          lightIndex = index
+        }
+      })
+      that.getProduct(categoryId)
+      that.setData({
+        lightIndex: lightIndex,
+        cateId: categoryId
+      })
+      
+    }
     
   },
 

@@ -85,7 +85,7 @@ Page({
 
   // 判断商品跳转
   isGoToGoodsList(e){
-    console.log("item === ", e)
+    // console.log("item === ", e)
     var item = e.currentTarget.dataset.item;
     var isShowProducts = item.is_show_products;
     var id = 0;
@@ -94,8 +94,9 @@ Page({
       app.utils.openPage2("../details/details?id=" + id, "redirect", "");
     }else{
       id = item.id
-      console.log("分类 == ", )
-      app.utils.openPage2("../category/category?id=" + id, "switchTab", "");
+      // console.log("分类 id == ", id)
+      app.globalData.categoryId = id;
+      app.utils.openPage2("../category/category", "switchTab", "");
     }
   },
 

@@ -168,7 +168,7 @@
         <image class="area_title_image" mode="widthFix" src="../../images/home/arrow.png" />
       </view>
 
-      <view class="area_cover" wx:if="true">
+      <view class="area_cover" wx:if="true" bindtap="isGoToGoodsList" data-item="{{item}}">
         <image mode="widthFix" src="{{ item.cover }}" />
         <view class="area_cover_name" wx:if="{{ item.description }}">
           <view class="div1">

@@ -316,6 +316,7 @@ App({
       }
     })
   },
+
   // 获取个人信息；
   getProfile(flag, cb) {
     var that = this;
@@ -345,6 +346,7 @@ App({
       typeof(cb) == 'function' && cb(userProfile)
     }
   },
+
   judgeAlliances(url) {
     var that = this
     webapi.judgeAlliances()
@@ -384,6 +386,7 @@ App({
         console.log("app--judgeAlliances--catch--res==", res)
       })
   },
+
   globalData: {
     userInfo: null,
     categoryData: [],
@@ -393,7 +396,7 @@ App({
     favoriteArr: {},
     addressArr: [],
     token: null,
-    token: "eyJsb2dpbl9uYW1lIjoib3d3NDR0OE83RUdxTDQzOVJPVHhYYklXOThpWSIsImlkIjoiOTEiLCJ0b2tlbiI6IjIxMDdmODliNzRjODYyNDY2ZWIzODFlZmU2NTI0NDlmODNkMGYyZWUifQ==",
+    token: "",
     selCartJson: null,
     selFriend: null,
     allianceData: null,
@@ -410,6 +413,7 @@ App({
       "CANCELED_REFUND_PENDING": "待退款",
       "CLOSED_REFUNDED": "已退款",
       "CONFIRMED_PICK_PENDING": "待取货"
-    }
+    },
+    categoryId:0
   }
 })

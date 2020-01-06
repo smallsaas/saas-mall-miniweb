@@ -1,4 +1,5 @@
 {
+  "navigationBarTitleText": "细物商城",
   "usingComponents": {
     "van-icon": "../../utils/vant/icon/index",
     "van-dialog": "../../utils/vant/dialog/index",
