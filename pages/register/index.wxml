@@ -1,6 +1,11 @@
 <!--pages/register/index.wxml-->
-  <image class="register-bg" src="../../images/register_bg.jpg"></image>
-  <button class="default-botton join-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">立即加入</button>
+  <!-- <image class="register-bg" src="../../images/register_bg.jpg"></image> -->
+
+  <view class="register-bg custom_flat_primary_medium body_css">
+    <view>欢迎光临</view>
+  </view>
+
+  <button class="default-botton join-btn" open-type="getUserInfo" bindgetuserinfo="getUserInfo">进入商城</button>
   <!-- <view class="join-btn" bindtap="showPopup" data-layer="showUserAuth">立即加入</view> -->
 
   <van-dialog use-slot

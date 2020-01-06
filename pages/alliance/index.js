@@ -102,8 +102,12 @@ Page({
   getRecommend() {
     var that = this;
     var recommend = [];
+    wx.showLoading({
+      title: '加载中',
+    })
     app.webapi.getRecommend()
       .then(res => {
+        wx.hideLoading()
         console.log("getRecommend--res==", res)
         if (res.data.status_code === 0) {
           if (res.data.data) {
@@ -119,6 +123,7 @@ Page({
         that.randomNum()
       })
       .catch(res => {
+        wx.hideLoading()
         console.log("getRecommend--catch--res==", res)
         wx.setStorageSync('recommend', [])
       })

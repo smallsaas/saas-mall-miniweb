@@ -9,6 +9,15 @@
   width: 100vw;
   height: 100%;
 }
+
+.body_css{
+  display: flex;
+  justify-content: center;
+  padding-top: 10%;
+  font-size: 20px;
+  color: #ffffff;
+}
+
 .join-btn {
   line-height: 150rpx;
   height: 180rpx;

@@ -6,7 +6,7 @@ var URL_API = 'https://mall.smallsaas.cn/rest'
 App({
   utils: utils,
   webapi: webapi,
-  onLaunch: function (options) {
+  onLaunch: function(options) {
     var that = this;
     console.log('app--onLaunch--options==', options)
     var inviteCode = null;
@@ -18,10 +18,10 @@ App({
     //   }
     // }, inviteCode)
     wx.getSystemInfo({
-      success: function (res) {
+      success: function(res) {
         console.log('app--etSystemInfo--res==', res)
         that.screenHeight = res.screenHeight,
-        that.screenWidth = res.screenWidth
+          that.screenWidth = res.screenWidth
       }
     })
     //调用API从本地缓存中获取数据
@@ -29,40 +29,48 @@ App({
     // logs.unshift(Date.now())
     // wx.setStorageSync('logs', logs)
   },
+
   onShow(options) {
     console.log('app--onShow--options==', options)
     var that = this;
-    var pages = getCurrentPages()
-    console.log("app--init--pages==", pages)
-    if (pages.length && pages[pages.length - 1].route != "pages/alliance/index") {
-      that.init()
-    }
+    // var pages = getCurrentPages()
+    // console.log("app--init--pages==", pages)
+    // if (pages.length && pages[pages.length - 1].route != "pages/alliance/index") {
+    // that.init()
+    // }
+    that.init()
+
   },
+
   isRuning: false,
+
+  //初始化信息
   init() {
     var that = this;
-    if (!that.isRuning) {
-      that.getCategory()
-      // that.getAllianceOrder()
-    }
+    // if (!that.isRuning) {
+    // that.getCategory()
+    // that.getAllianceOrder()
+    // }
 
     //TODO
-    // that.login("", function (res) {
-    //   if (res.data.status_code === 0) {
-    //     // this.utils.openPage2("/pages/register/phone")
-    //     if (!that.isRuning) {
-    //       that.getCategory()
-    //       that.getAllianceOrder()
-    //     }
-    //   }
-    // }, 'app')
-    console.log("app--init--that.isRuning==", that.isRuning)
+    that.login("", function(res) {
+      if (res.data.status_code === 0) {
+        // this.utils.openPage2("/pages/register/phone")
+        if (!that.isRuning) {
+          // that.getCategory()
+          // that.getAllianceOrder()
+        }
+      }
+    }, 'app')
+    // console.log("app--init--that.isRuning==", that.isRuning)
     // if (!that.isRuning) {
     //   that.getCategory()
     //   that.getAllianceOrder()
     // } else {
     // }
   },
+
+  //商品分类
   getCategory() {
     var that = this;
     that.isRuning = true;
@@ -94,6 +102,8 @@ App({
         that.isRuning = false;
       })
   },
+
+  //登录
   login(userAuth, cb, page) {
     wx.showLoading({
       title: '加载中',
@@ -103,9 +113,15 @@ App({
         console.log("wx.login--res==", res)
         if (userAuth) {
           wx.setStorageSync("userInfo", userAuth.userInfo)
-          return webapi.apiLogin({ code: res.code, encryptedData: userAuth.encryptedData, iv: userAuth.iv })
+          return webapi.apiLogin({
+            code: res.code,
+            encryptedData: userAuth.encryptedData,
+            iv: userAuth.iv
+          })
         } else {
-          return webapi.apiLogin({ code: res.code })
+          return webapi.apiLogin({
+            code: res.code
+          })
         }
       })
       .then(res => {
@@ -118,15 +134,15 @@ App({
             if (page) {
               return;
             }
-            if (userAuth) {
-              this.judgeAlliances("/pages/register/phone")
-            } else {
-              this.judgeAlliances("/pages/register/index")
-            }
+            // if (userAuth) {
+            //   this.judgeAlliances("/pages/register/phone")
+            // } else {
+            //   this.judgeAlliances("/pages/register/index")
+            // }
           }
-          typeof (cb) == 'function' && cb(res)
+          typeof(cb) == 'function' && cb(res)
         } else if (res.data.status_code == 4001) {
-          // if (res.data.message === "auth.required") {}
+          if (res.data.message === "auth.required") {}
           utils.openPage2("/pages/register/index", "redirect")
           // if (that) {
           //   that.setData({
@@ -142,8 +158,9 @@ App({
         console.log("wx.login--catch--res==", res)
       })
   },
-  
-  getUserInfo: function (cb) {
+
+  //用户信息
+  getUserInfo: function(cb) {
     var that = this
     if (this.globalData.userInfo) {
       typeof cb == "function" && cb(this.globalData.userInfo)
@@ -151,7 +168,7 @@ App({
       //调用登录接口
       wx.getUserInfo({
         withCredentials: false,
-        success: function (res) {
+        success: function(res) {
           that.globalData.userInfo = res.userInfo
           typeof cb == "function" && cb(that.globalData.userInfo)
         }
@@ -178,9 +195,9 @@ App({
             console.log("getAllianceOrder--commissionTotal==", commissionTotal)
           }
           this.globalData.allianceData = res.data.data
-          typeof (cb) === 'function' && cb(res.data.data)
+          typeof(cb) === 'function' && cb(res.data.data)
         } else {
-          typeof (cb) === 'function' && cb('')
+          typeof(cb) === 'function' && cb('')
         }
         wx.hideLoading()
         wx.stopPullDownRefresh()
@@ -191,7 +208,7 @@ App({
         wx.hideLoading()
         wx.stopPullDownRefresh()
         this.isRuning = false;
-        typeof (cb) === 'function' && cb('')
+        typeof(cb) === 'function' && cb('')
       })
   },
 
@@ -232,7 +249,7 @@ App({
           wx.showToast({
             title: '支付成功',
           })
-          typeof (cb) === "function" && cb(res)
+          typeof(cb) === "function" && cb(res)
         } else {
           throw res
         }
@@ -253,8 +270,9 @@ App({
         })
       })
   },
+
   // 请求商品收藏列表；
-  getFavorite: function (callback) {
+  getFavorite: function(callback) {
     console.log(159357)
     var that = this
     wx.request({
@@ -265,7 +283,7 @@ App({
         'Authorization': that.globalData.token,
         'content-type': 'json'
       },
-      success: function (res) {
+      success: function(res) {
         // console.log("app---getFavorite")
         // console.log(res.data.data)
         // that.globalData.favoriteArr = res.data.data
@@ -274,7 +292,7 @@ App({
         if (data.status_code == 0) {
           that.globalData.favoriteArr = data.data
           callback(res.data.data)
-        }else{
+        } else {
           console.log("获取收藏信息失败")
         }
 
@@ -282,7 +300,7 @@ App({
     });
   },
   // 获取收货地址列表；
-  getAddressList: function (callback) {
+  getAddressList: function(callback) {
     var that = this
     wx.request({
       url: that.globalData.URL_API + '/contact',
@@ -291,7 +309,7 @@ App({
         'Authorization': that.globalData.token,
         'content-type': 'json'
       },
-      success: function (res) {
+      success: function(res) {
 
         that.globalData.addressArr = res.data.data
         callback(res.data.data)
@@ -314,9 +332,9 @@ App({
             // }
             if (res.data.data) {
               wx.setStorageSync("user_profile", res.data.data)
-              typeof (cb) == 'function' && cb(res.data.data)
+              typeof(cb) == 'function' && cb(res.data.data)
             } else {
-              typeof (cb) == 'function' && cb("")
+              typeof(cb) == 'function' && cb("")
             }
           }
         })
@@ -324,7 +342,7 @@ App({
           console.log("getProfile--catch--res==", res)
         })
     } else {
-      typeof (cb) == 'function' && cb(userProfile)
+      typeof(cb) == 'function' && cb(userProfile)
     }
   },
   judgeAlliances(url) {
@@ -339,13 +357,11 @@ App({
           if (url === "/pages/register/phone") {
             utils.openPage2(url, "redirect")
           } else {
-            utils.promisify(wx.showModal)(
-              {
+            utils.promisify(wx.showModal)({
                 title: '提示',
                 content: '您不是盟友，请绑定手机号码',
                 showCancel: false,
-              }
-            )
+              })
               .then(res => {
                 console.log("judgeAlliances--showModal--res==", res)
                 if (res.confirm) {

@@ -12,14 +12,15 @@ Page({
     console.log("getUserInfo--e==", e)
     if (e.detail.errMsg == "getUserInfo:ok") {
       //TODO
-      // app.login(e.detail, function (res) {
-        // console.log("getUserInfo--login--res==", res)
-        // if (res.data.status_code === 0) {
+      app.login(e.detail, function (res) {
+        console.log("getUserInfo--login--res==", res)
+        if (res.data.status_code === 0) {
           // if (!res.data.data.phone) {
           //   app.utils.openPage2("./phone", "reLaunch")
           // }
-        // }
-      // })
+          app.utils.openPage2("../alliance/index", "reLaunch")
+        }
+      })
     }
   },
   hidePopup(e) {
