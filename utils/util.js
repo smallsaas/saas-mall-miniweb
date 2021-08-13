@@ -1,4 +1,4 @@
-const API_HOST = 'https://mall.smallsaas.cn/rest'
+const API_HOST = 'https://api.mall.smallsaas.cn/rest'
 
 const formatTime = date => {
   const year = date.getFullYear()

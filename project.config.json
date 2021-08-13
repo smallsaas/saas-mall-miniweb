@@ -1,136 +1,157 @@
 {
-	"description": "项目配置文件",
-	"packOptions": {
-		"ignore": []
-	},
-	"setting": {
-		"urlCheck": true,
-		"es6": true,
-		"postcss": true,
-		"minified": true,
-		"newFeature": true,
-		"autoAudits": false,
-		"coverView": true
-	},
-	"compileType": "miniprogram",
-	"libVersion": "2.9.4",
-	"appid": "wxe6c9f3e8447a3e35",
-	"projectname": "zero-wxa",
-	"debugOptions": {
-		"hidedInDevtools": []
-	},
-	"isGameTourist": false,
-	"simulatorType": "wechat",
-	"simulatorPluginLibVersion": {},
-	"condition": {
-		"search": {
-			"current": -1,
-			"list": []
-		},
-		"conversation": {
-			"current": -1,
-			"list": []
-		},
-		"plugin": {
-			"current": -1,
-			"list": []
-		},
-		"game": {
-			"currentL": -1,
-			"list": []
-		},
-		"gamePlugin": {
-			"current": -1,
-			"list": []
-		},
-		"miniprogram": {
-			"current": -1,
-			"list": [
-				{
-					"id": -1,
-					"name": "朋友",
-					"pathName": "pages/friend/friend",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "添加朋友",
-					"pathName": "pages/friend/add",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 2,
-					"name": "logo",
-					"pathName": "pages/alliance/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 3,
-					"name": "pages/personal/team/profile",
-					"pathName": "pages/personal/team/profile",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "pages/alliance/judge",
-					"pathName": "pages/alliance/judge",
-					"query": "inviteCode=4a2f7ebd01259bdbc5afe6bedca8d338",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "物流详情",
-					"pathName": "pages/order/express",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 6,
-					"name": "pages/register/phone",
-					"pathName": "pages/register/phone",
-					"query": "inviteCode=4a2f7ebd01259bdbc5afe6bedca8d338",
-					"scene": 1011
-				},
-				{
-					"id": -1,
-					"name": "不是盟友提示页面",
-					"pathName": "pages/register/applied",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "提现",
-					"pathName": "pages/personal/amount/cash-out/index",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "商品",
-					"pathName": "pages/category/category",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": -1,
-					"name": "重置密码",
-					"pathName": "pages/personal/wallet",
-					"query": "",
-					"scene": null
-				},
-				{
-					"id": 11,
-					"name": "绑定",
-					"pathName": "pages/register/phone",
-					"query": "",
-					"scene": null
-				}
-			]
-		}
-	}
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": true,
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": false,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "lazyloadPlaceholderEnable": false,
+    "useMultiFrameRuntime": true,
+    "useApiHook": true,
+    "useApiHostProcess": true,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "enableEngineNative": false,
+    "useIsolateContext": true,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": false,
+    "packNpmRelationList": [],
+    "minifyWXSS": true,
+    "showES6CompileOption": false
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.9.4",
+  "appid": "wx85525b9fb625f66f",
+  "projectname": "zero-wxa",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "search": {
+      "list": []
+    },
+    "conversation": {
+      "list": []
+    },
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "currentL": -1,
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "朋友",
+          "pathName": "pages/friend/friend",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "添加朋友",
+          "pathName": "pages/friend/add",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 2,
+          "name": "logo",
+          "pathName": "pages/alliance/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 3,
+          "name": "pages/personal/team/profile",
+          "pathName": "pages/personal/team/profile",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/alliance/judge",
+          "pathName": "pages/alliance/judge",
+          "query": "inviteCode=4a2f7ebd01259bdbc5afe6bedca8d338",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "物流详情",
+          "pathName": "pages/order/express",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 6,
+          "name": "pages/register/phone",
+          "pathName": "pages/register/phone",
+          "query": "inviteCode=4a2f7ebd01259bdbc5afe6bedca8d338",
+          "scene": 1011
+        },
+        {
+          "id": -1,
+          "name": "不是盟友提示页面",
+          "pathName": "pages/register/applied",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "提现",
+          "pathName": "pages/personal/amount/cash-out/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "商品",
+          "pathName": "pages/category/category",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "重置密码",
+          "pathName": "pages/personal/wallet",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 11,
+          "name": "绑定",
+          "pathName": "pages/register/phone",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
 }

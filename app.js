@@ -1,7 +1,7 @@
 //app.js
 const utils = require('./utils/util.js')
 const webapi = require('./webapi/index.js')
-var URL_API = 'https://mall.smallsaas.cn/rest'
+var URL_API = 'https://api.mall.smallsaas.cn/rest'
 
 App({
   utils: utils,
@@ -391,7 +391,7 @@ App({
     userInfo: null,
     categoryData: [],
     // URL_API: 'https://www.kequandian.net/rest',
-    URL_API: "https://mall.smallsaas.cn/rest",
+    URL_API: "https://api.mall.smallsaas.cn/rest",
     // URL_API: "https://biliya.zele.pro/rest",
     favoriteArr: {},
     addressArr: [],

@@ -1,6 +1,6 @@
 import utils from "../utils/util";
 let app = getApp()
-const API_HOST = 'https://mall.smallsaas.cn/rest'
+const API_HOST = 'https://api.mall.smallsaas.cn/rest'
 
 // 登录；
 function apiLogin(params) {
